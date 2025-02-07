@@ -44,6 +44,7 @@ Tables
 1. Users
 2. Contacts
 
-
+### How to Pull from github
+run git pull in htdocs
 
 
