@@ -1,5 +1,4 @@
-// TODO: fix login function
-// (This is gerber's)
+// (This is gerber's code im using as ref)
 
 const urlBase = "http://ultrausefulcontactmanager.site/LAMPAPI";
 const extension = 'php';
