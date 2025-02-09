@@ -15,7 +15,7 @@ body{
 .container {
     width: 100%;
     max-width: 900px;
-  }
+}
 /* the login card */
 .login-card {
     background-color:#FDFDF5;

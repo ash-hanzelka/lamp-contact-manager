@@ -7,8 +7,16 @@ const extension = 'php';
 let userId = 0;
 let firstName = "";
 let lastName = "";
-
+ 
 function doLogin()
+// reset errors
+// get the txt entries
+// login check statement
+// init err message
+// store the email and hashed password w json
+// http request
+// send json
+// handle missing fields
 {
   userId = 0;
   firstName = "";
@@ -22,7 +30,7 @@ function doLogin()
 
   let tmp = {login:login,password:password};
 //	var tmp = {login:login,password:hash};
-  let jsonPayload = JSON.stringify( tmp );
+  let jsonPayload = JSON.stringify(tmp);
 
   let url = urlBase + '/Login.' + extension;
 
@@ -60,6 +68,7 @@ function doLogin()
   }
 
 }
+
 
 function saveCookie()
 {
