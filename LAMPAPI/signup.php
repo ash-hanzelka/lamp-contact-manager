@@ -5,7 +5,7 @@
     // make a connection to the database
     $db_connection = new mysqli("localhost", "admins", "administratorpriveleges", "Contact");
     if( $db_connection->connect_error ) {
-        header('Content-type application/json');
+        header('Content-type: application/json');
         $error_json_msg = '{"msg":"WOMP WOMP"}';
         echo $error_json_msg;
     }
