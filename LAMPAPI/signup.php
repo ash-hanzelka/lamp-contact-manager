@@ -8,5 +8,9 @@
         header('Content-type: application/json');
         $error_json_msg = '{"msg":"WOMP WOMP"}';
         echo $error_json_msg;
+    } else {
+        header('Content-type: application/json');
+        $success_message = '{"msg" : "SQL Server Connected"}';
+        echo $success_message;
     }
 ?>
