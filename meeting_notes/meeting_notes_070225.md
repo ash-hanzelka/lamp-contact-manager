@@ -32,18 +32,6 @@ Search a contact (using partial search) php
 ## Changes 
 The database for individual contacts does need phone number and date created/added
 
-## API Endpoints
-website/api/Login.php
-website/api/NewUser.php
-
-### DB User and Password
-user: admin
-password: administratorpriveleges
-Database: Contact
-Tables
-1. Users
-2. Contacts
-
 ### How to Pull from github
 run git pull in htdocs
 
