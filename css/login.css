@@ -70,8 +70,9 @@ body{
 }
 /* styling for the signup hyperlink */
 .login-card p {
-    font-size: 20px;
+    font-size: 25px;
     text-align: center;
+    margin-top: 20px;
     color: #3D5690;
 }
 .login-card p:hover {
