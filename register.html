@@ -3,11 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Manager - Register</title>
     <!-- Importing the font API -->
     <link href="https://fonts.googleapis.com/css2?family=Gabarito:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/register.css">
 </head>
 <body>
-    <h1>Hello, World!</h1>
+    <!-- Container holding the registration form -->
+    <div class="container">
+	<!-- ragister card -->
+        <div class="register-card">
+            <h1>SIGN UP</h1>
+            <form id="registerForm">
+                <span id="registerResult"></span> <!-- error-->
+                <input type="text" id="registerUsername" placeholder="Username" required>
+                <input type="password" id="registerPassword" placeholder="Password" required>
+                <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
+                <button type="button" id="registerButton" class="buttons" onclick="doRegister();">Sign Up</button>
+            </form>
+            <a href="index.html">
+                <p>Already have an account? Login!</p>
+            </a>            
+        </div>
+    </div>
+    <script src="js/md5.js"></script>
+    <script src="js/cookie.js"></script>
+    <script src="js/register.js"></script>    
 </body>
-</html>
