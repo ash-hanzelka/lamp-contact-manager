@@ -17,9 +17,14 @@
         */
         // Sanity check
         $exitence_stmt = $db_connection->prepare("SELECT COUNT(*) AS num_users FROM Users WHERE username = ?");
-        $existence_stmt->bind_param("s", $username);
-        $this_works = '{"message": "parameters binded successfully"}';
-        returnJson($this_works);
+        $did_work = $existence_stmt->bind_param("s", $username);
+        if($did_work) {
+            $worked = '{"msg":"parameters binded successfully"}';
+            returnJson($worked);
+        } else {
+            $error_json_msg = '{"msg":"WOMP WOMP"}';
+            returnJson($error_json_msg);
+        }
         
         
         // $existence_stmt = $db_connection->prepare($existence_query);
