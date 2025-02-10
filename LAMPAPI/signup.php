@@ -17,12 +17,15 @@
         */
         // This follows the prepare - bind - execute model for SQL queries in PHP please work I am going to crash out
         $existence_stmt = db_connection->prepare("SELECT * FROM Users WHERE username = ?");
+        returnMsg("preparing successful! ^-^");
         $existence_stmt->bind_param("s", $username);
+        returnMsg("binding successful! ^-^");
         $existence_stmt->execute();
+        returnMsg("executing successful! ^-^");
         $existence_result = $existence_stmt->get_result();
+        returnMsg("fetching successful! ^-^");
         $query_result = $existence_result->fetch_assoc();
-
-        returnMsg("query successful! ^-^");
+        returnMsg("setting to associative array successful! ^-^");
     }
 
     function returnJson($obj) {
