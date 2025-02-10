@@ -19,12 +19,15 @@
             die(1); // cooler version of exit
         }
         $existence_result = $existence_stmt->get_result();
-        $num_users = (int) $existence_result->fetch_assoc()["num_users"];
+        $num_users = $existence_result->fetch_assoc()['num_users'];
 
         if($num_users == 1) {
             $user_exists_msg = '{"msg":"The user already exists"}';
             returnJson($user_exists_msg);
             die(1); // the objectively cooler version of exit
+        } else {
+            $user_dne_msg = '{"msg":"User does not exist"}';
+            returnJson($user_dne_msg);
         }
     }
 
