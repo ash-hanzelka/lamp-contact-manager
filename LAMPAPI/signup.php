@@ -12,7 +12,7 @@
         echo $error_json_msg;
     } else {
         header('Content-type: application/json');
-        $success_message = '{"username" : "{$username}", "password":"{$password}"}';
+        $success_message = sprintf('{"username":"%s","password":"%s"}', $username, $password);
         echo $success_message;
     }
     /*
