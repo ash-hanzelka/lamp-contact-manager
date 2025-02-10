@@ -23,6 +23,7 @@
         
         $num_users_dtype = gettype($num_users);
         $final_msg = sprintf('{"data_type":"%s"}', $num_users_dtype);
+        returnJson($final_msg);
         /*
         
         if($num_users == 1) {
