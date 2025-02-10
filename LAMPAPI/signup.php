@@ -15,9 +15,8 @@
         /*
         Possible solution, maybe use bind_params() method instead of sprintf to bind the parameters to the statement
         */
-        $existence_query = 'SELECT COUNT(*) AS num_users FROM Users WHERE username = "?";';
         // Sanity check
-        $exitence_stmt = $db_connection->prepare($existence_query);
+        $exitence_stmt = $db_connection->prepare("SELECT COUNT(*) AS num_users FROM Users WHERE username = ?");
         $existence_stmt->bind_param("s", $username);
         $this_works = '{"message": "parameters binded successfully"}';
         returnJson($this_works);
