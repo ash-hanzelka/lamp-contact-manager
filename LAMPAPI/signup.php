@@ -16,13 +16,21 @@
         Possible solution, maybe use bind_params() method instead of sprintf to bind the parameters to the statement
         */
         // Sanity check
-        returnJson('{"msg":"connection successful"}');
+        returnMsg("Connection successful");
         $existence_stmt = db_connection->prepare("SELECT * FROM Users WHERE username = ?");
+        if($existence_stmt == false) {
+            returnMsg("Unable to prepare statement");
+        }
     }
 
     function returnJson($obj) {
         header('Content-type: application/json');
         echo $obj;
+    }
+
+    function returnMsg($string) {
+        $ret_msg = sprintf('{"msg":"%s"}', $string);
+        returnJson($ret_msg);
     }
     /*
     Sign-up Flow
