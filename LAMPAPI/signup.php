@@ -11,6 +11,10 @@
         $error_json_msg = '{"msg":"WOMP WOMP"}';
         returnJson($error_json_msg);
     } else {
+        // TODO: Figure out why there is 500 Internal Server Error
+        /*
+        Possible solution, maybe use bind_params() method instead of sprintf to bind the parameters to the statement
+        */
         $existence_query = sprintf("SELECT COUNT(*) AS num_users FROM Users WHERE username = %s;", $username);
         $existence_stmt = $db_connection->prepare($existence_query);
         $existence_stmt->execute();
