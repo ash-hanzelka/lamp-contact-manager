@@ -18,7 +18,8 @@
         $existence_query = 'SELECT COUNT(*) AS num_users FROM Users WHERE username = "?";';
         // Sanity check
         $exitence_stmt = $db_connection->prepare($existence_query);
-        $this_works = '{"message": "query prepared successfully"}';
+        $existence_stmt->bind_param("s", $username);
+        $this_works = '{"message": "parameters binded successfully"}';
         returnJson($this_works);
         
         
