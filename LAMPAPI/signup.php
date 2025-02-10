@@ -20,7 +20,11 @@
         }
         $existence_result = $existence_stmt->get_result();
         $num_users = $existence_result->fetch_assoc()['num_users'];
-
+        
+        $num_users_dtype = gettype($num_users);
+        $final_msg = sprintf('{"data_type":"%s"}', $num_users_dtype);
+        /*
+        
         if($num_users == 1) {
             $user_exists_msg = '{"msg":"The user already exists"}';
             returnJson($user_exists_msg);
@@ -29,6 +33,8 @@
             $user_dne_msg = '{"msg":"User does not exist"}';
             returnJson($user_dne_msg);
         }
+        
+        */
     }
 
     function returnJson($obj) {
