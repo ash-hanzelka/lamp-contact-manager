@@ -16,15 +16,21 @@
         Possible solution, maybe use bind_params() method instead of sprintf to bind the parameters to the statement
         */
         $existence_query = 'SELECT COUNT(*) AS num_users FROM Users WHERE username = "?";';
-        $existence_stmt = $db_connection->prepare($existence_query);
-        $existence_stmt->bind_params("s", $username);
-        $existence_stmt->execute();
-        $existence_result = $existence_stmt->get_result();
-        $num_users = $existence_result->fetch_assoc()['num_users'];
+        // Sanity check
+        $exitence_stmt = $db_connection->prepare($existence_query);
+        $this_works = '{"message": "query prepared successfully"}';
+        returnJson($this_works);
         
-        $num_users_dtype = gettype($num_users);
-        $final_msg = sprintf('{"data_type":"%s"}', $num_users_dtype);
-        returnJson($final_msg);
+        
+        // $existence_stmt = $db_connection->prepare($existence_query);
+        // $existence_stmt->bind_params("s", $username);
+        // $existence_stmt->execute();
+        // $existence_result = $existence_stmt->get_result();
+        // $num_users = $existence_result->fetch_assoc()['num_users'];
+        
+        // $num_users_dtype = gettype($num_users);
+        // $final_msg = sprintf('{"data_type":"%s"}', $num_users_dtype);
+        // returnJson($final_msg);
     
         /*
         
