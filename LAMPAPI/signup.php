@@ -17,8 +17,7 @@
         */
         // Sanity check
         returnJson('{"msg":"connection successful"}');
-        $exitence_stmt = $db_connection->prepare("SELECT COUNT(*) AS num_users FROM Users WHERE username = ?");
-        $existence_stmt->bind_param("s", $username);
+        $existence_stmt = db_connection->prepare("SELECT * FROM Users WHERE username = ?");
     }
 
     function returnJson($obj) {
