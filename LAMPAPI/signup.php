@@ -1,7 +1,9 @@
 <?php 
     // read the data http body into $in_data
     $in_data = json_decode(file_get_contents('php://input'), true);
-    
+    $username = $in_data["username"];
+    $password = $in_data["password"];
+
     // make a connection to the database
     $db_connection = new mysqli("localhost", "Admin", "administratorpriveleges", "Contact");
     if( $db_connection->connect_error ) {
@@ -10,7 +12,10 @@
         echo $error_json_msg;
     } else {
         header('Content-type: application/json');
-        $success_message = '{"msg" : "SQL Server Connected"}';
+        $success_message = '{"username" : "{$username}", "password":"{$password}"}';
         echo $success_message;
     }
+    /*
+    Sign-up Flow
+    */
 ?>
