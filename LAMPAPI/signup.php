@@ -16,7 +16,6 @@
         Possible solution, maybe use bind_params() method instead of sprintf to bind the parameters to the statement
         */
         // Sanity check
-        returnMsg("Connection successful");
         $existence_stmt = db_connection->prepare("SELECT * FROM Users WHERE username = ?");
         if($existence_stmt == false) {
             returnMsg("Unable to prepare statement");
