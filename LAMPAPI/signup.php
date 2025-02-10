@@ -17,38 +17,19 @@
         */
         // Sanity check
         $exitence_stmt = $db_connection->prepare("SELECT COUNT(*) AS num_users FROM Users WHERE username = ?");
-        $did_work = $existence_stmt->bind_param("s", $username);
-        if($did_work) {
-            $worked = '{"msg":"parameters binded successfully"}';
-            returnJson($worked);
-        } else {
-            $error_json_msg = '{"msg":"WOMP WOMP"}';
+        $existence_stmt->bind_param("s", $username);
+        $existence_stmt->execute();
+        $result = $existence_stmt->get_result();
+
+        $row = $result->fetch_assoc();
+        $num_users = $row["num_users"];
+        if($num_users > 0) {
+            $error_json_msg = '{"msg":"The user already exists"}';
             returnJson($error_json_msg);
-        }
-        
-        
-        // $existence_stmt = $db_connection->prepare($existence_query);
-        // $existence_stmt->bind_params("s", $username);
-        // $existence_stmt->execute();
-        // $existence_result = $existence_stmt->get_result();
-        // $num_users = $existence_result->fetch_assoc()['num_users'];
-        
-        // $num_users_dtype = gettype($num_users);
-        // $final_msg = sprintf('{"data_type":"%s"}', $num_users_dtype);
-        // returnJson($final_msg);
-    
-        /*
-        
-        if($num_users == 1) {
-            $user_exists_msg = '{"msg":"The user already exists"}';
-            returnJson($user_exists_msg);
-            die(1); // the objectively cooler version of exit
         } else {
-            $user_dne_msg = '{"msg":"User does not exist"}';
-            returnJson($user_dne_msg);
+            $success_message = '{"msg":"The user has been created successfully"}';
+            returnJson($success_message);
         }
-        
-        */
     }
 
     function returnJson($obj) {
