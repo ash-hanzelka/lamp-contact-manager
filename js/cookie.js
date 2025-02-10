@@ -8,3 +8,6 @@
     document.cookie = `userId=${userId}; expires=${date.toUTCString()}; path=/`;
 }
 */
+/* function readCookie() { */ 
+
+/* function dologout() { */ 
