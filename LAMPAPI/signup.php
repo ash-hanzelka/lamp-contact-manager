@@ -18,18 +18,6 @@
         // Sanity check
         $exitence_stmt = $db_connection->prepare("SELECT COUNT(*) AS num_users FROM Users WHERE username = ?");
         $existence_stmt->bind_param("s", $username);
-        $existence_stmt->execute();
-        $result = $existence_stmt->get_result();
-
-        $row = $result->fetch_assoc();
-        $num_users = $row["num_users"];
-        if($num_users > 0) {
-            $error_json_msg = '{"msg":"The user already exists"}';
-            returnJson($error_json_msg);
-        } else {
-            $success_message = '{"msg":"The user has been created successfully"}';
-            returnJson($success_message);
-        }
     }
 
     function returnJson($obj) {
