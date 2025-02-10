@@ -11,7 +11,7 @@
         $error_json_msg = '{"msg":"WOMP WOMP"}';
         returnJson($error_json_msg);
     } else {
-        $existence_query = sprintf("SELECT COUNT(*) AS num_users FROM Users WHERE username = %s", $username);
+        $existence_query = sprintf("SELECT COUNT(*) AS num_users FROM Users WHERE username = %s;", $username);
         $existence_stmt = $db_connection->prepare($existence_query);
         $existence_stmt->execute();
         $existence_result = $existence_stmt->get_result();
