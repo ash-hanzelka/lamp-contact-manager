@@ -13,18 +13,14 @@
     } else {
         $existence_query = sprintf("SELECT COUNT(*) AS num_users FROM Users WHERE username = %s", $username);
         $existence_stmt = $db_connection->prepare($existence_query);
-        if(!$existence_stmt->execute()) {
-            $failure_msg = '{"msg":"sql failed idk sowwy! >_<"}';
-            returnJson($failure_msg);
-            die(1); // cooler version of exit
-        } else {
-            $existence_result = $existence_stmt->get_result();
-            $num_users = $existence_result->fetch_assoc()['num_users'];
-            
-            $num_users_dtype = gettype($num_users);
-            $final_msg = sprintf('{"data_type":"%s"}', $num_users_dtype);
-            returnJson($final_msg);
-        }
+        $existence_stmt->execute();
+        $existence_result = $existence_stmt->get_result();
+        $num_users = $existence_result->fetch_assoc()['num_users'];
+        
+        $num_users_dtype = gettype($num_users);
+        $final_msg = sprintf('{"data_type":"%s"}', $num_users_dtype);
+        returnJson($final_msg);
+    
         /*
         
         if($num_users == 1) {
