@@ -3,6 +3,10 @@ user: admin
 password: administratorpriveleges
 Database: Contact
 
+user: theManager
+password: ContactManager
+Database: Contact
+
 # Tables 
 1. Users
     1. userid (primary key)
