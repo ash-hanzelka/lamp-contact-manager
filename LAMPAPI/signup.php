@@ -3,6 +3,8 @@
 
     $username = $in_data["username"];
     $password = $in_data["password"];
+    $first_name = $in_data["first_name"];
+    $last_name = $in_data["last_name"];
 
     $conn = new mysqli("localhost", "theManager", "ContactManager", "Contact");
     if( $conn->connect_error ) {
@@ -20,7 +22,14 @@
         if($num_users > 0) {
             returnMsg("Username already exists.");
         } else {
-            returnMsg("Username is available.");
+            $insert_stmt = $conn->prepare("INSERT INTO Users (username, password, firstName, lastName) VALUES (?, ?, ?, ?)");
+            $insert_stmt->bind_param("ssss", $username, $password, $first_name, $last_name);
+            $insert_stmt->execute();
+            if($insert_stmt->affected_rows > 0) {
+                returnMsg("User created successfully.");
+            } else {
+                returnMsg("Error creating user.");
+            }
         }
     }
 
