@@ -25,7 +25,7 @@
             $insert_stmt = $conn->prepare("INSERT INTO Users (username, password, firstName, lastName) VALUES (?, ?, ?, ?)");
             $insert_stmt->bind_param("ssss", $username, $password, $first_name, $last_name);
             $insert_stmt->execute();
-            if($insert_stmt->affected_rows > 0) {
+            if($conn->affected_rows > 0) {
                 returnMsg("User created successfully.");
             } else {
                 returnMsg("Error creating user.");
