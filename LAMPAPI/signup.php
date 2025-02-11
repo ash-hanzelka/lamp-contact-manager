@@ -9,15 +9,7 @@
     if(conn->connect_error) {
         returnMsg("Connection Error");
     } else {
-        // check if the user is in the database
-        $stmt = $conn->prepare("SELECT * FROM Users WHERE username=?");
-        $stmt->bind_param("s", $username);
-        $stmt->execute();
-        $result = $stmt->get_result();
-
-        if(result->num_rows > 0) {
-            returnMsg("User already exists");
-        } 
+        returnMsg(sprintf("username: %s", $username));
     }
 
     function returnJson($obj) {
