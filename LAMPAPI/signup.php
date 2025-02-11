@@ -4,7 +4,12 @@
     $username = $inData["username"];
     $password = $inData["password"];
 
-    returnMsg(sprintf("Hello %s! Your password is %s", $username, $password));
+    $conn = new mysqli("localhost", "theManager", "ContactManager", "Contact");
+    if( $conn->connect_error ) {
+        returnMsg("Connection failed: " . $conn->connect_error);
+    } else {
+        returnMsg("Connected successfully");
+    }
 
     function returnMsg($string) {
         $retMsg = sprintf('{"msg":"%s"}', $string);
