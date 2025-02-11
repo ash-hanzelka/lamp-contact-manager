@@ -1,30 +1,32 @@
 <?php 
-    $in_data = json_decode(file_get_contents("php://input"), true);
+    $inData = json_decode(file_get_contents("php://input"), true);
 
-    $username = $in_data["username"];
-    $password = $in_data["password"];
-    $first_name = $in_data["first_name"];
-    $last_name = $in_data["last_name"];
+    $username = $inData["username"];
+    $password = $inData["password"];
+    $first_name = $inData["firstName"];
+    $last_name = $inData["lastName"];
 
     $conn = new mysqli("localhost", "theManager", "ContactManager", "Contact");
     if( $conn->connect_error ) {
         returnMsg("Connection failed: " . $conn->connect_error);
     } else {
         // Check if the user exists
-        $existence_stmt = $conn->prepare("SELECT COUNT(*) as num_users FROM Users WHERE username = ?");
-        $existence_stmt->bind_param("s", $username);
-        $existence_stmt->execute();
+        $existenceStmt = $conn->prepare("SELECT COUNT(*) as num_users FROM Users WHERE username = ?");
+        $existenceStmt->bind_param("s", $username);
+        $existenceStmt->execute();
 
-        $existence_result = $existence_stmt->get_result();
+        $existenceResult = $existenceStmt->get_result();
 
-        $num_users = (int) $existence_result->fetch_assoc()["num_users"];
+        $numUsers = (int) $existenceResult->fetch_assoc()["num_users"];
+        $existenceStmt->close();
 
-        if($num_users > 0) {
+        // If the user exists, return an error message
+        if($numUsers > 0) {
             returnMsg("Username already exists.");
         } else {
-            $insert_stmt = $conn->prepare("INSERT INTO Users (username, password, firstName, lastName) VALUES (?, ?, ?, ?)");
-            $insert_stmt->bind_param("ssss", $username, $password, $first_name, $last_name);
-            $insert_stmt->execute();
+            $insertStmt = $conn->prepare("INSERT INTO Users (username, password, firstName, lastName) VALUES (?, ?, ?, ?)");
+            $insertStmt->bind_param("ssss", $username, $password, $first_name, $last_name);
+            $insertStmt->execute();
             if($conn->affected_rows > 0) {
                 returnMsg("User created successfully.");
             } else {
