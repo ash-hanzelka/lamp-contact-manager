@@ -5,11 +5,20 @@
     $password = $in_data["password"];
 
     // make a connection to the database
-    $db_connection = new mysqli("localhost", "Admin", "administratorpriveleges", "Contact");
+    $conn = new mysqli("localhost", "Admin", "administratorpriveleges", "Contact");
+    if(conn->connect_error) {
+        returnMsg("Connection Error");
+    } else {
+        // check if the user is in the database
+        $stmt = $conn->prepare("SELECT * FROM Users WHERE username=?");
+        $stmt->bind_param("s", $username);
+        $stmt->execute();
+        $result = $stmt->get_result();
 
-    $exist_stmt = db_connection->prepare("SELECT COUNT(*) as num_users FROM Users WHERE username = ?");
-    $exist_stmt->bind_param("s", $username);
-    $exist_stmt->execute();
+        if(result->num_rows > 0) {
+            returnMsg("User already exists");
+        } 
+    }
 
     function returnJson($obj) {
         header('Content-type: application/json');
