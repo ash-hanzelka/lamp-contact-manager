@@ -8,7 +8,11 @@
     if( $conn->connect_error ) {
         returnMsg("Connection failed: " . $conn->connect_error);
     } else {
-        returnMsg("Connected successfully");
+        $stmt = $conn->prepare("SELECT * FROM Users WHERE username = ?");
+        $stmt->bind_param("s", $username);
+        $stmt->execute();
+
+        returnMsg("Executed query");
     }
 
     function returnMsg($string) {
