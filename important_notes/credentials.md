@@ -1,10 +1,12 @@
 # Database Credentials
-user: admin
-password: administratorpriveleges
+user: admin\
+password: administratorpriveleges\
 Database: Contact
 
-user: theManager
-password: ContactManager
+For some reason admin user did not work when querying the Contact database, I made a new user (down below) and it works as expected\
+
+user: theManager\
+password: ContactManager\
 Database: Contact
 
 # Tables 
