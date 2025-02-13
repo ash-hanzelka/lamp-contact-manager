@@ -65,10 +65,16 @@ function doRegister() {
 function checkRegister(username, password, confirmPassword) {
     if (!username || !password || !confirmPassword) {
         document.getElementById("registerResult").innerHTML = "All fields are required.";
-        if (!username) document.getElementById("registerUsername").classList.add('error');
-        if (!password) document.getElementById("registerPassword").classList.add('error');
-        if (!confirmPassword) document.getElementById("confirmPassword").classList.add('error');
-        return true; // fail registration
+        if (!username)  {
+            document.getElementById("registerUsername").classList.add('error');
+        }
+        if (!password) {
+            document.getElementById("registerPassword").classList.add('error');
+        }
+        if (!confirmPassword){
+            document.getElementById("confirmPassword").classList.add('error');
+        }
+        return true; // registration has failed
     }
 
     if (password !== confirmPassword) {
