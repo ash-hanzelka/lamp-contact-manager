@@ -32,6 +32,7 @@
             } else {
                 returnError("Error creating user.");
             }
+            $insertStmt->close();
         }
     }
 
