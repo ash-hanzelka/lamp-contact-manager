@@ -1,31 +1,47 @@
 <?php 
-    // read the data http body into $in_data
-    $in_data = json_decode(file_get_contents('php://input'), true);
-    $username = $in_data["username"];
-    $password = $in_data["password"];
+    $inData = json_decode(file_get_contents("php://input"), true);
 
-    // make a connection to the database
-    $conn = new mysqli("localhost", "Admin", "administratorpriveleges", "Contact");
-    if(conn->connect_error) {
-        returnMsg("Connection Error");
+    $username = $inData["username"];
+    $password = $inData["password"];
+    $first_name = $inData["firstName"];
+    $last_name = $inData["lastName"];
+
+    $conn = new mysqli("localhost", "theManager", "ContactManager", "Contact");
+    if( $conn->connect_error ) {
+        returnMsg("Connection failed: " . $conn->connect_error);
     } else {
-        returnMsg(sprintf("username: %s", $username));
-    }
+        // Check if the user exists
+        $existenceStmt = $conn->prepare("SELECT COUNT(*) as num_users FROM Users WHERE username = ?");
+        $existenceStmt->bind_param("s", $username);
+        $existenceStmt->execute();
 
-    function returnJson($obj) {
-        header('Content-type: application/json');
-        echo $obj;
+        $existenceResult = $existenceStmt->get_result();
+
+        $numUsers = (int) $existenceResult->fetch_assoc()["num_users"];
+        $existenceStmt->close();
+
+        // If the user exists, return an error message
+        if($numUsers > 0) {
+            returnMsg("Username already exists.");
+        } else {
+            $insertStmt = $conn->prepare("INSERT INTO Users (username, password, firstName, lastName) VALUES (?, ?, ?, ?)");
+            $insertStmt->bind_param("ssss", $username, $password, $first_name, $last_name);
+            $insertStmt->execute();
+            if($conn->affected_rows > 0) {
+                returnMsg("User created successfully.");
+            } else {
+                returnMsg("Error creating user.");
+            }
+        }
     }
 
     function returnMsg($string) {
-        $ret_msg = sprintf('{"msg":"%s"}', $string);
-        returnJson($ret_msg);
+        $retMsg = sprintf('{"msg":"%s"}', $string);
+        returnJson($retMsg);
     }
-    /*
-    Sign-up Flow
-        1. check if the user is in the database
-            1.1 yes -> send a message saying it already exists
-            1.2 no -> make a new row with the passed username and password
-                send a message informing the user has been created successfully
-    */
+
+    function returnJson($obj) {
+        header('Content-Type: application/json');
+        echo $obj;
+    }
 ?>
