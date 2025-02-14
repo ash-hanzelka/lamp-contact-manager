@@ -21,7 +21,7 @@ function doRegister() {
 
     // hash the password
     var hash = md5(password); // hashing password
-
+    console.log(hash);
     // prepare data to send
     
     var jsonPayload = JSON.stringify({
