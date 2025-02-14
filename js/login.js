@@ -32,7 +32,7 @@ function doLogin() {
     // wait for response
     // Handle server response
     xhr.onreadystatechange = function () {
-        if (this.readyState == 4) {
+        if (this.readyState == 4 && this.status == 200) {
             if (this.status == 200) {
                 try {
                     var jsonObject = JSON.parse(xhr.responseText);
