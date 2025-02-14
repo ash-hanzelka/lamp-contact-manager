@@ -21,7 +21,13 @@ function doRegister() {
     var hash = md5(password); // hashing password
 
     // prepare data to send
-    var jsonPayload = JSON.stringify({ "username": username, "password": hash });
+    
+    var jsonPayload = JSON.stringify({
+        "username": username,
+        "password": hash,
+        "firstName": firstName,
+        "lastName": lastName
+    });
     var url = urlBase + '/register.' + extension;
 
     // make HTTP request
@@ -35,24 +41,34 @@ function doRegister() {
             if (this.status == 200) {
                 try {
                     var jsonObject = JSON.parse(xhr.responseText);
-
-                    // handle errors from API response
-                    if (jsonObject.error) {
-                        document.getElementById("registerResult").innerHTML = jsonObject.error;
-                        return;
+    
+                    // Handle errors from API response
+                    if (jsonObject.status === "error") {
+                        document.getElementById("registerResult").innerHTML = jsonObject.msg;
+    
+                        // If the error is about the username already being taken, highlight the input
+                        if (jsonObject.msg.toLowerCase().includes("username already exists")) {
+                            document.getElementById("registerUsername").classList.add('error');
+                        }
+    
+                        return; // STOP execution here
                     }
-
-                    // If registration successful, redirect to login page
-                    window.location.href = "index.html";
-                } 
-                catch (error) {
+    
+                    // If registration is successful, show a message and redirect
+                    document.getElementById("registerResult").innerHTML = "Registration successful! Redirecting...";
+                    setTimeout(() => {
+                        window.location.href = "index.html";
+                    }, 1500);
+    
+                } catch (error) {
                     document.getElementById("registerResult").innerHTML = "Error processing registration response.";
                 }
             } else {
                 document.getElementById("registerResult").innerHTML = "Registration failed. Please try again.";
             }
         }
-    }
+    };
+    
 
     xhr.onerror = function () {
         document.getElementById("registerResult").innerHTML = "Request failed. Please try again.";
@@ -63,7 +79,7 @@ function doRegister() {
 
 // handle validation errors
 function checkRegister(username, password, confirmPassword) {
-    if (!username || !password || !confirmPassword) {
+    if (!username || !password || !confirmPassword || !firstName || !lastName) {
         document.getElementById("registerResult").innerHTML = "All fields are required.";
         if (!username)  {
             document.getElementById("registerUsername").classList.add('error');
@@ -73,6 +89,12 @@ function checkRegister(username, password, confirmPassword) {
         }
         if (!confirmPassword){
             document.getElementById("confirmPassword").classList.add('error');
+        }
+        if (!firstName) {
+            document.getElementById("registerFirstName").classList.add('error');
+        }
+        if (!lastName) {
+            document.getElementById("registerLastName").classList.add('error');
         }
         return true; // registration has failed
     }
