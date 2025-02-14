@@ -53,8 +53,6 @@ function doLogin() {
                     let firstName = jsonObject.firstname;
                     let lastName = jsonObject.lastname;
 
-                    // TODO: FIX THIS FUNCTION CALL - cookie.js 
-                    saveCookie();
 
                     // Redirect to contacts page after successful login
                     window.location.href = "contacts.html";
