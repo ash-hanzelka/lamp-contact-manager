@@ -8,7 +8,7 @@
 
     $conn = new mysqli("localhost", "theManager", "ContactManager", "Contact");
     if( $conn->connect_error ) {
-        returnMsg("Connection failed: " . $conn->connect_error);
+        returnError("Connection failed: " . $conn->connect_error);
     } else {
         // Check if the user exists
         $existenceStmt = $conn->prepare("SELECT COUNT(*) as num_users FROM Users WHERE username = ?");
@@ -22,16 +22,17 @@
 
         // If the user exists, return an error message
         if($numUsers > 0) {
-            returnMsg("Username already exists.");
+            returnError("Username already exists.");
         } else {
             $insertStmt = $conn->prepare("INSERT INTO Users (username, password, firstName, lastName) VALUES (?, ?, ?, ?)");
             $insertStmt->bind_param("ssss", $username, $password, $first_name, $last_name);
             $insertStmt->execute();
             if($conn->affected_rows > 0) {
-                returnMsg("User created successfully.");
+                returnSuccess("User created successfully.");
             } else {
-                returnMsg("Error creating user.");
+                returnError("Error creating user.");
             }
+            $insertStmt->close();
         }
     }
 
@@ -40,6 +41,15 @@
         returnJson($retMsg);
     }
 
+    function returnError($string) {
+        $retMsg = sprintf('{"status":"error","msg":"%s"}', $string);
+        returnJson($retMsg);
+    }
+
+    function returnSuccess($string) {
+        $retMsg = sprintf('{"status":"success","msg":"%s"}', $string);
+        returnJson($retMsg);
+    }
     function returnJson($obj) {
         header('Content-Type: application/json');
         echo $obj;
