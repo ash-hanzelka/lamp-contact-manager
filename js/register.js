@@ -21,7 +21,13 @@ function doRegister() {
     var hash = md5(password); // hashing password
 
     // prepare data to send
-    var jsonPayload = JSON.stringify({ "username": username, "password": hash });
+    
+    var jsonPayload = JSON.stringify({
+        "username": username,
+        "password": hash,
+        "firstName": firstName,
+        "lastName": lastName
+    });
     var url = urlBase + '/register.' + extension;
 
     // make HTTP request
@@ -38,12 +44,20 @@ function doRegister() {
 
                     // handle errors from API response
                     if (jsonObject.error) {
-                        document.getElementById("registerResult").innerHTML = jsonObject.error;
+                        if (jsonObject.error.toLowerCase().includes("already taken")) {
+                            document.getElementById("registerResult").innerHTML = "Username is already taken. Please choose another.";
+                            document.getElementById("registerUsername").classList.add('error');
+                        } else {
+                            document.getElementById("registerResult").innerHTML = jsonObject.error;
+                        }
                         return;
                     }
 
                     // If registration successful, redirect to login page
-                    window.location.href = "index.html";
+                    // document.getElementById("registerResult").innerHTML = "Registration successful! Redirecting...";
+                    // setTimeout(() => {
+                    //     window.location.href = "index.html";
+                    // }, 1500);
                 } 
                 catch (error) {
                     document.getElementById("registerResult").innerHTML = "Error processing registration response.";
@@ -63,7 +77,7 @@ function doRegister() {
 
 // handle validation errors
 function checkRegister(username, password, confirmPassword) {
-    if (!username || !password || !confirmPassword) {
+    if (!username || !password || !confirmPassword || !firstName || !lastName) {
         document.getElementById("registerResult").innerHTML = "All fields are required.";
         if (!username)  {
             document.getElementById("registerUsername").classList.add('error');
@@ -73,6 +87,12 @@ function checkRegister(username, password, confirmPassword) {
         }
         if (!confirmPassword){
             document.getElementById("confirmPassword").classList.add('error');
+        }
+        if (!firstName) {
+            document.getElementById("registerFirstName").classList.add('error');
+        }
+        if (!lastName) {
+            document.getElementById("registerLastName").classList.add('error');
         }
         return true; // registration has failed
     }
