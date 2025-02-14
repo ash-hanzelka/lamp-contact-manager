@@ -10,8 +10,8 @@ function doRegister() {
     // get input values
     var username = document.getElementById("registerUsername").value;
     var password = document.getElementById("registerPassword").value;
-    var firstName = document.getElementById("registerFirstName").value;
-    var lastName = document.getElementById("registerLastName").value;
+    var firstName = document.getElementById("firstName").value;
+    var lastName = document.getElementById("lastName").value;
     var confirmPassword = document.getElementById("confirmPassword").value;
 
     // check for empty fields or mismatched passwords
