@@ -10,7 +10,7 @@ function doLogin() {
     // get text entries
     var username = document.getElementById("loginName").value;
     var password = document.getElementById("loginPassword").value;
-    var hash = md5(password); // hash of password
+    // var hash = md5(password); hash of password
 
     // check login
     if (checkLogin(username, password)) {
@@ -21,7 +21,7 @@ function doLogin() {
     document.getElementById("loginResult").innerHTML = "";
 
     // store username and hashed password in JSON
-    var jsonPayload = JSON.stringify({ "username": username, "password": hash });
+    var jsonPayload = JSON.stringify({ "username": username, "password": password });
     var url = urlBase + '/signin.' + extension;
 
     // make HTTP request
