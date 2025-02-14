@@ -22,7 +22,7 @@ function doLogin() {
 
     // store username and hashed password in JSON
     var jsonPayload = JSON.stringify({ "username": username, "password": hash });
-    var url = urlBase + '/login.' + extension;
+    var url = urlBase + '/signin.' + extension;
 
     // make HTTP request
     var xhr = new XMLHttpRequest();
