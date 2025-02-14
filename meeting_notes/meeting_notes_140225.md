@@ -21,6 +21,7 @@
 # Endpoints
 1. add contact -> newcontact.php
     1. TAKES IN
+        0. userid
         1. first name
         2. last name
         3. email address
@@ -31,6 +32,7 @@
         JSON w/ status: failure
 2. delete contact -> deletecontact.php
     1. TAKES IN
+        0. userid
         1. first name
         2. last name
         3. email address
@@ -41,6 +43,7 @@
         JSON w/ status: failure
 3. look up contact -> searchcontact.php
     1. TAKES IN
+        0. userid
         1. first name
         2. last name
     2. RETURNS
@@ -48,6 +51,7 @@
         2. list of contacts (with their information)
 4. update contact -> updatecontact.php (IRONING OUT)
     1. TAKES IN
+        0. userid
         1. Original information of the contact
         2. New information of the contact
     2. RETURNS Success
