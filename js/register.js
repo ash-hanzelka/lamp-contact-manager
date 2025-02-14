@@ -6,14 +6,18 @@ function doRegister() {
     document.getElementById("registerUsername").classList.remove('error');
     document.getElementById("registerPassword").classList.remove('error');
     document.getElementById("confirmPassword").classList.remove('error');
+    document.getElementById("registerFirstName").classList.remove('error');
+    document.getElementById("registerLastName").classList.remove('error');
 
     // get input values
     var username = document.getElementById("registerUsername").value;
     var password = document.getElementById("registerPassword").value;
     var confirmPassword = document.getElementById("confirmPassword").value;
+    var firstName = document.getElementById("registerFirstName").value;  
+    var lastName = document.getElementById("registerLastName").value;   
 
     // check for empty fields or mismatched passwords
-    if (checkRegister(username, password, confirmPassword)) {
+    if (checkRegister(username, password, confirmPassword, firstName, lastName)) {
         return;
     }
 
