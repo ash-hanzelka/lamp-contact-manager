@@ -41,32 +41,34 @@ function doRegister() {
             if (this.status == 200) {
                 try {
                     var jsonObject = JSON.parse(xhr.responseText);
-
-                    // handle errors from API response
-                    if (jsonObject.error) {
-                        if (jsonObject.error.toLowerCase().includes("already taken")) {
-                            document.getElementById("registerResult").innerHTML = "Username is already taken. Please choose another.";
+    
+                    // Handle errors from API response
+                    if (jsonObject.status === "error") {
+                        document.getElementById("registerResult").innerHTML = jsonObject.msg;
+    
+                        // If the error is about the username already being taken, highlight the input
+                        if (jsonObject.msg.toLowerCase().includes("username already exists")) {
                             document.getElementById("registerUsername").classList.add('error');
-                        } else {
-                            document.getElementById("registerResult").innerHTML = jsonObject.error;
                         }
-                        return;
+    
+                        return; // STOP execution here
                     }
-
-                    // If registration successful, redirect to login page
-                    // document.getElementById("registerResult").innerHTML = "Registration successful! Redirecting...";
-                    // setTimeout(() => {
-                    //     window.location.href = "index.html";
-                    // }, 1500);
-                } 
-                catch (error) {
+    
+                    // If registration is successful, show a message and redirect
+                    document.getElementById("registerResult").innerHTML = "Registration successful! Redirecting...";
+                    setTimeout(() => {
+                        window.location.href = "index.html";
+                    }, 1500);
+    
+                } catch (error) {
                     document.getElementById("registerResult").innerHTML = "Error processing registration response.";
                 }
             } else {
                 document.getElementById("registerResult").innerHTML = "Registration failed. Please try again.";
             }
         }
-    }
+    };
+    
 
     xhr.onerror = function () {
         document.getElementById("registerResult").innerHTML = "Request failed. Please try again.";
