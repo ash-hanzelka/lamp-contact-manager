@@ -2,16 +2,36 @@
     $inData = json_decode(file_get_contents("php://input"), true);
 
     $userId = (int) $inData["userId"];
+    if(!$userId) {
+        returnError("No userId");
+    }
     $firstName = $inData["firstName"]; 
+    if(!$firstName) {
+        returnError("No first Name");
+    }
     $lastName = $inData["lastName"];
+    if(!$lastName) {
+        returnError("No last Name");
+    }
     $email = $inData["email"];  
+    if(!$email) {
+        returnError("No email address");
+    }
     $phone = $inData["phone"];
+    if(!$phone) {
+        returnError("No no phone number");
+    }
 
     $conn = new mysqli("localhost", "theManager", "ContactManager", "Contact");
-    if($conn->connection_error) {
-        returnError($conn->connection_error);
+    if($conn->connect_error) {
+        returnError($conn->connect_error);
     } else {
         $stmt = $conn->prepare("INSERT INTO Contacts (userid, firstName, lastName, email, phone) VALUES (?, ?, ?, ?, ?)");
+        if(!$stmt) {
+            returnError("Prepare failed" . $conn->error);
+            exit;
+        }
+
         $stmt->bind_param("issss", $userId, $firstName, $lastName, $email, $phone);
         $stmt->execute();
 
