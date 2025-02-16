@@ -11,10 +11,15 @@
     if($conn->connection_error) {
         returnError($conn->connection_error);
     } else {
-        $paramsPassed = sprintf('{"userId":"%s","firstName":"%s","lastName":"%s","email":"%s","phone":"%s"}',
-            $userId, $firstName, $lastName, $email, $phone);
+        $stmt = $conn->prepare("INSERT INTO Contacts (userid, firstName, lastName, email, phone) VALUES (?, ?, ?, ?, ?)");
+        $stmt->bind_param("issss", $userId, $firstName, $lastName, $email, $phone);
+        $stmt->execute();
 
-        returnJson($paramsPassed);
+        if($conn->affected_rows > 0) {
+            returnSuccess("Contact added successfully");
+        } else {
+            returnError("Error while adding happened");
+        }
     }
 
     function returnMsg($string) {
