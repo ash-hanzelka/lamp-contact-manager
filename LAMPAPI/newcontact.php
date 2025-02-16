@@ -1,4 +1,6 @@
 <?php 
+    ini_set('display_errors', 1);
+    error_reporting(E_ALL);
     $inData = json_decode(file_get_contents("php://input"), true);
 
     $userId = (int) $inData["userId"];
