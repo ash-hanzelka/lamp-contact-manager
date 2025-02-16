@@ -1,0 +1,41 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Gabarito', sans-serif;
+}
+body {
+    background-color: #1e2738;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+.container {
+    width: 100%;
+    max-width: 800px;
+    padding: 20px;
+}
+  .contactsheader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.contactsheader h1 {
+    color: white;
+}
+.addcontacts {
+    background-color: #d4e5a5;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+/*
+.search-container input { 
+
+}
+*/
