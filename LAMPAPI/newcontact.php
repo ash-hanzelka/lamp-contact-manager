@@ -1,7 +1,7 @@
 <?php 
     $inData = json_decode(file_get_contents("php://input"), true);
 
-    $userId = $inData["userId"];
+    $userId = (int) $inData["userId"];
     $firstName = $inData["firstName"]; 
     $lastName = $inData["lastName"];
     $email = $inData["email"];  
