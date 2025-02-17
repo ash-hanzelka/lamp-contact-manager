@@ -31,11 +31,8 @@
             "numRows" => $stmt_result->num_rows,
             "Contacts" => getRowsAsArray($stmt_result)
         ];
-        if($stmt_result->num_rows == 0) {
-            returnEncodeJson($jsonToReturn);
-        } else {
-            returnEncodeJson($jsonToReturn);
-        }
+
+        returnEncodeJson($jsonToReturn);
     }
 
     function returnMsg($string) {
