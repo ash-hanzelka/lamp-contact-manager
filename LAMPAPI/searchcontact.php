@@ -32,7 +32,6 @@
             "Contacts" => getRowsAsArray($stmt_result)
         ];
         if($stmt_result->num_rows == 0) {
-            $jsonToReturn["Contacts"] = "[]";
             returnEncodeJson($jsonToReturn);
         } else {
             returnEncodeJson($jsonToReturn);
