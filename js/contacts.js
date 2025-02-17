@@ -3,6 +3,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const addContactForm = document.getElementById('addcontactform');
     const toggleFormButton = document.getElementById('toggleformbutton');
     const cancelFormButton = document.getElementById('cancelForm');
+
+
     const searchInput = document.getElementById('searchInput');
     // delete
 
@@ -24,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function fetchContacts() {
         fetch(`${urlBase}/searchcontact.${extension}`, {
             method: 'POST',
-            body: JSON.stringify({ type: "getall" }), // attempting to not filter by the id
+            body: JSON.stringify({ userId: userId, type: "getall" }), 
             headers: { "Content-Type": "application/json" }
         })
         .then(response => response.json())
@@ -75,6 +77,7 @@ document.addEventListener("DOMContentLoaded", function () {
         e.preventDefault();
 
         const contactData = {
+            userId: userId, 
             firstName: document.getElementById('firstName').value.trim(),
             lastName: document.getElementById('lastName').value.trim(),
             email: document.getElementById('email').value.trim(),
@@ -99,7 +102,7 @@ document.addEventListener("DOMContentLoaded", function () {
         })
         .catch(error => console.error("Error:", error));
     });
-
+    // TO DO
     searchInput.addEventListener('input', function () {
         let searchTerm = searchInput.value.trim(); // for the input field 
 
