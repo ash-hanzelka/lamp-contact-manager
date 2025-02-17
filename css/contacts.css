@@ -16,7 +16,7 @@ body {
     max-width: 800px;
     padding: 20px;
 }
-  .contactsheader {
+.contactsheader {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -25,6 +25,7 @@ body {
 .contactsheader h1 {
     color: white;
 }
+
 .addcontacts {
     background-color: #d4e5a5;
     border: none;
@@ -33,9 +34,18 @@ body {
     cursor: pointer;
     font-weight: 600;
 }
-
-/*
-.search-container input { 
-
+.addcontacts:hover {
+    background-color: #b5d37a; 
 }
-*/
+
+.search-container input {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    background-color: #f0f4ff;
+    font-size: 16px;
+    outline: none;
+    border: 2px solid #9FBAF1;
+    margin-bottom: 20px;
+}

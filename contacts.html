@@ -10,14 +10,23 @@
     <div class="container">
         <div class="contactsheader">
             <h1>CONTACT MANAGER</h1>
-            <button id="_____" class="addcontacts">+ ADD CONTACT</button>
+            <button id="toggleformbutton" class="addcontacts">+ ADD CONTACT</button>
         </div>
-        
-        <!-- todo: container for search -->
-         <!-- contacts -->
-
-
-
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Search Contacts">
+        </div>
+    <!-- need to add hidden attribute in js for here later -->
+        <form id="addcontactform" class="hidden-form">
+            <input type="text" placeholder="First Name" id="firstName" required>
+            <input type="text" placeholder="Last Name" id="lastName" required>
+            <input type="email" placeholder="Email" id="email" required pattern="^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$">
+            <input type="text" placeholder="Phone Number (xxx-xxx-xxxx)" id="phone" required pattern="^(1-)?\d{3}-\d{3}-\d{4}$">
+            <div class="form-buttons">
+                <button type="submit">Save Contact</button>
+                <button type="button" id="cancelForm">Cancel</button>
+            </div>
+        </form>
     </div>
+    <!-- Script here -->
 </body>
 </html>
