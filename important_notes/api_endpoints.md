@@ -26,3 +26,4 @@
                     4. email
                     5. phone
         3. Notes: if there are no contacts it will return numRows: 0 and an empty array for Contacts
+        

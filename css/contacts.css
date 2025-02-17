@@ -10,6 +10,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 20px;
   }
 .container {
     width: 100%;
@@ -24,6 +25,9 @@ body {
 }
 .contactsheader h1 {
     color: white;
+}
+.hidden-form {
+    display: none;
 }
 
 .addcontacts {
@@ -48,4 +52,64 @@ body {
     outline: none;
     border: 2px solid #9FBAF1;
     margin-bottom: 20px;
+}
+.contacts-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.contact-card {
+    background-color: #f0f4ff;
+    padding: 15px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.contact-card h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+}
+
+.contact-card p {
+    font-size: 14px;
+    color: #555;
+}
+
+form {
+    background-color: #f0f4ff;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+form input {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    outline: none;
+    border: 1px solid #ccc;
+}
+form input:focus {
+    border: 2px solid #9FBAF1;
+}
+.form-buttons {
+    display: flex;
+    gap: 10px;
+}
+.form-buttons button {
+    background-color: #9FBAF1;
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
 }

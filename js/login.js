@@ -52,6 +52,10 @@ function doLogin() {
 
                     let firstName = jsonObject.firstname;
                     let lastName = jsonObject.lastname;
+                    // trying local storage
+                    localStorage.setItem("userId", userId);
+                    localStorage.setItem("firstName", firstName);
+                    localStorage.setItem("lastName", lastName);
 
 
                     // Redirect to contacts page after successful login
