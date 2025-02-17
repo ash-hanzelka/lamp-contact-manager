@@ -46,7 +46,7 @@
 
     function getRowsAsArray($sqlResult) {
         $retArray = [];
-        while($row = sqlResult->fetch_assoc()) {
+        while($row = $sqlResult->fetch_assoc()) {
             array_push($retArray, $row);
         }
 
