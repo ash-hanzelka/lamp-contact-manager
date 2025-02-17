@@ -29,12 +29,10 @@
         } 
         $jsonToReturn = [
             "numRows" => $stmt_result->num_rows,
-            "Contacts" => [
-                "contact" => "test test test"
-            ]
+            "Contacts" => getRowsAsArray($stmt_result)
         ];
         if($stmt_result->num_rows == 0) {
-            $jsonToReturn["Contacts"] = "empty string";
+            $jsonToReturn["Contacts"] = "[]";
             returnEncodeJson($jsonToReturn);
         } else {
             returnEncodeJson($jsonToReturn);
@@ -44,6 +42,15 @@
     function returnMsg($string) {
         $retMsg = sprintf('{"msg":"%s"}', $string);
         returnJson($retMsg);
+    }
+
+    function getRowsAsArray($sqlResult) {
+        $retArray = [];
+        while($row = sqlResult->fetch_assoc()) {
+            array_push($retArray, $row);
+        }
+
+        return $retArray;
     }
 
     function returnError($string) {
