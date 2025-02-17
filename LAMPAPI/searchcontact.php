@@ -31,7 +31,7 @@
         if($stmt_result->num_rows == 0) {
             returnRows(0, "[]");
         } else {
-            returnRows(1, "[test test test]");
+            returnRows(1, "[test, test, test]");
         }
     }
 
