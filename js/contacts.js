@@ -75,7 +75,6 @@ document.addEventListener("DOMContentLoaded", function () {
         e.preventDefault();
 
         const contactData = {
-            userId: 1, // remove
             firstName: document.getElementById('firstName').value.trim(),
             lastName: document.getElementById('lastName').value.trim(),
             email: document.getElementById('email').value.trim(),
