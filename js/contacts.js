@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const addContactForm = document.getElementById('addcontactform');
     const toggleFormButton = document.getElementById('toggleformbutton');
     const cancelFormButton = document.getElementById('cancelForm');
-    // search 
+    const searchInput = document.getElementById('searchInput');
     // delete
 
     // Define API base URL and extension
@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function fetchContacts() {
         fetch(`${urlBase}/searchcontact.${extension}`, {
             method: 'POST',
-            body: JSON.stringify({ userId: userId, type: "getall" }), 
+            body: JSON.stringify({ type: "getall" }), // attempting to not filter by the id
             headers: { "Content-Type": "application/json" }
         })
         .then(response => response.json())
@@ -75,7 +75,7 @@ document.addEventListener("DOMContentLoaded", function () {
         e.preventDefault();
 
         const contactData = {
-            userId: userId, 
+            userId: 1, // remove
             firstName: document.getElementById('firstName').value.trim(),
             lastName: document.getElementById('lastName').value.trim(),
             email: document.getElementById('email').value.trim(),
@@ -101,7 +101,32 @@ document.addEventListener("DOMContentLoaded", function () {
         .catch(error => console.error("Error:", error));
     });
 
-    // load contacts when page loads
+    searchInput.addEventListener('input', function () {
+        let searchTerm = searchInput.value.trim(); // for the input field 
+
+        if (searchTerm === "") {
+            fetchContacts(); 
+            return;
+        }
+
+        fetch(`${urlBase}/searchcontact.${extension}`, {
+            method: 'POST',
+            body: JSON.stringify({ type: "search", searchTerm: searchTerm }), 
+            headers: { "Content-Type": "application/json" }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.numRows === 0) {
+                contactsList.innerHTML = "<p>No contacts found.</p>";
+            } 
+            else {
+                displayContacts(data.Contacts);
+            }
+        })
+        .catch(error => console.error("Error searching contacts:", error));
+    });
+
+    // load contacts
     fetchContacts();
 });
 
