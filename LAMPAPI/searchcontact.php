@@ -40,7 +40,7 @@
     }
 
     function returnRows($num_rows, $json_object) {
-        $retJson = sprintf('{"num_rows":"%i", "contacts":%s}', $num_rows, $json_object);
+        $retJson = sprintf('{"num_rows":"%d", "contacts":%s}', $num_rows, $json_object);
         returnJson($retJson);
     }
 
