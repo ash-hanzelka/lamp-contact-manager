@@ -27,21 +27,18 @@
             returnError("Statement Fail");
             die();
         } 
-
+        $jsonToReturn = [
+            "numRows" => $stmt_result->num_rows,
+            "Contacts" => [
+                "contact" => "test test test"
+            ]
+        ];
         if($stmt_result->num_rows == 0) {
-            returnRows(0, "[]");
+            $jsonToReturn["Contacts"] = "empty string";
+            returnEncodeJson($jsonToReturn);
         } else {
-            returnRows(1, "[test, test, test]");
+            returnEncodeJson($jsonToReturn);
         }
-    }
-
-    function buildJsonList($sql_result) {
-
-    }
-
-    function returnRows($num_rows, $json_object) {
-        $retJson = sprintf('{"num_rows":"%d", "contacts":%s}', $num_rows, $json_object);
-        returnJson($retJson);
     }
 
     function returnMsg($string) {
@@ -62,5 +59,10 @@
     function returnJson($obj) {
         header('Content-Type: application/json');
         echo $obj;
+    }
+
+    function returnEncodeJson($obj) {
+        header('Contact-Type: application/json');
+        echo json_encode($obj);
     }
 ?>
