@@ -56,10 +56,10 @@
 
         returnEncodeJson($jsonToReturn);
     } else if(strcmp($type, "getset") == 0) {
-        $firstName = $inData["firstName"];
+        $firstName = $inData["firstName"].'%';
 
         $stmt = $conn->prepare("SELECT * FROM Contacts WHERE userid = ? AND
-        firstName LIKE '?%'");
+        firstName LIKE ?");
         $stmt->bind_param("is", $userId, $firstName);
         $stmt->execute();
 
