@@ -6,6 +6,7 @@
     $inData = json_decode(file_get_contents('php://input'), true);
 
     $type = $inData["type"];
+    $userId = (int) $inData["userId"];
 
     // connect to the database
     $conn = new mysqli("localhost", "theManager", "ContactManager", "Contact");
@@ -16,7 +17,6 @@
 
     // gets all contacts associated with userId. 
     if(strcmp($type, "getall") == 0) {
-        $userId = (int) $inData["userId"];
 
         $stmt = $conn->prepare("SELECT * FROM Contacts WHERE userid = ?");
         $stmt->bind_param("i", $userId);
@@ -27,6 +27,28 @@
             returnError("Statement Fail");
             die();
         } 
+        $jsonToReturn = [
+            "numRows" => $stmt_result->num_rows,
+            "Contacts" => getRowsAsArray($stmt_result)
+        ];
+
+        returnEncodeJson($jsonToReturn);
+    } else if(strcmp($type, "getone") == 0) { // gets a single contact
+        $firstName = $inData["firstName"];
+        $lastName = $inData["lastName"];
+
+        $stmt = $conn->prepare("SELECT * FROM Contacts WHERE userid = ? AND
+        firstName = ? AND
+        lastName = ?");
+        $stmt->bind_param("iss", $userId, $firstName, $lastName);
+        $stmt->execute();
+
+        $stmt_result = $stmt->get_result();
+        if($stmt_result == false) {
+            returnError("Statement Fail");
+            die();
+        }
+
         $jsonToReturn = [
             "numRows" => $stmt_result->num_rows,
             "Contacts" => getRowsAsArray($stmt_result)
