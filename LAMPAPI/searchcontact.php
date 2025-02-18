@@ -55,6 +55,26 @@
         ];
 
         returnEncodeJson($jsonToReturn);
+    } else if(strcmp($type, "getset") == 0) {
+        $firstName = $inData["firstName"];
+
+        $stmt = $conn->prepare("SELECT * FROM Contacts WHERE userid = ? AND
+        firstName LIKE '?%'");
+        $stmt->bind_param("is", $userId, $firstName);
+        $stmt->execute();
+
+        $stmt_result = $stmt->get_result();
+        if($stmt_result == false) {
+            returnError("Statement error");
+            die();
+        }
+
+        $jsonToReturn = [
+            "numRows" => $stmt_result->num_rows,
+            "Contacts" => getRowsAsArray($stmt_result)
+        ];
+
+        returnEncodeJson($jsonToReturn);
     }
 
     function returnMsg($string) {
