@@ -42,4 +42,21 @@
                     4. email
                     5. phone   
             3. Notes: if there are no contacts it will return numRows: 0 and an empty array for Contacts
+    3. Fetch a set of contacts
+        1. Takes in:
+            1. type: getone
+            2. userId: (userId of user)
+            3. firstName
+        2. returns
+            1. numRows: number of contacts with matching parameters
+            2. Contacts: Array of Contacts
+                1. Contact has:
+                    1. userid
+                    2. firstName
+                    3. lastName
+                    4. email
+                    5. phone   
+            3. Notes: if there are no contacts it will return numRows: 0 and an empty array for Contacts    
+        3. **Notice: what this option does is that it will get all the contacts that have a first name starting with what was entered as firstName**
+
         
