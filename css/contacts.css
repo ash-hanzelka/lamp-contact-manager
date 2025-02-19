@@ -129,7 +129,7 @@ form input:focus {
     font-weight: 600;
 }
 /* contacts */
-.contact-actions button {
+/* .contact-actions button {
     background-color: #c5d3ff;
     border: none;
     width: 35px;
@@ -144,4 +144,4 @@ form input:focus {
 
 .contact-actions button:hover {
     background-color: #9FBAF1;
-}
+} */
