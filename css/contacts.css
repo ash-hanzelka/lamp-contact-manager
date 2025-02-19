@@ -5,7 +5,7 @@
     font-family: 'Gabarito', sans-serif;
 }
 body {
-    background-color: #1e2738;
+    background-color: 232E49;
     min-height: 100vh;
     display: flex;
     align-items: center;
@@ -32,7 +32,7 @@ body {
 }
 
 .addcontacts {
-    background-color: #d4e5a5;
+    background-color: #DEE99B;
     border: none;
     padding: 10px 20px;
     border-radius: 10px;
@@ -40,7 +40,7 @@ body {
     font-weight: 600;
 }
 .addcontacts:hover {
-    background-color: #b5d37a;
+    background-color: #a6c36c;
 }
 
 /* search bar */
