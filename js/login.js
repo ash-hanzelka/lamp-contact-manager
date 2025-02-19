@@ -16,7 +16,6 @@ function doLogin() {
     if (checkLogin(username, password)) {
         return;
     }
-
     // clear previous login errors
     document.getElementById("loginResult").innerHTML = "";
 

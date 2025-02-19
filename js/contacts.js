@@ -15,9 +15,6 @@ document.addEventListener("DOMContentLoaded", function () {
     // trying local storage
     var userId = localStorage.getItem("userId");
 
-
-
-
     // fetch
     if (!userId) {
         window.location.href = "index.html"; // redirect
@@ -32,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
         .then(response => response.json())
         .then(data => {
             if (data.numRows === 0) {
-                contactsList.innerHTML = "<p>No contacts found.</p>"; 
+                contactsList.innerHTML = '<p style="color: white; font-size: 16px; text-align: center;">No contacts found.</p>';
             } else if (Array.isArray(data.Contacts)) {
                 displayContacts(data.Contacts);
             } else {
@@ -121,7 +118,7 @@ document.addEventListener("DOMContentLoaded", function () {
         .then(response => response.json())
         .then(data => {
             if (data.numRows === 0) {
-                contactsList.innerHTML = "<p>No contacts found.</p>";
+                contactsList.innerHTML = '<p style="color: white; font-size: 16px; text-align: center;">No contacts found.</p>';
             } 
             else {
                 displayContacts(data.Contacts);

@@ -61,6 +61,7 @@ body {
 
 .contact-card {
     background-color: #f0f4ff;
+    border: 2px solid #9FBAF1;
     padding: 15px;
     border-radius: 10px;
     display: flex;
