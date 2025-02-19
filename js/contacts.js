@@ -83,7 +83,6 @@ document.addEventListener("DOMContentLoaded", function () {
             email: document.getElementById('email').value.trim(),
             phone: document.getElementById('phone').value.trim()
         };
-
         fetch(`${urlBase}/newcontact.${extension}`, {
             method: 'POST',
             body: JSON.stringify(contactData),
@@ -104,8 +103,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
     // TO DO
     searchInput.addEventListener('input', function () {
-        let searchTerm = searchInput.value.trim(); // for the input field 
-
+        let searchTerm = searchInput.value.trim(); 
         if (searchTerm === "") {
             fetchContacts(); 
             return;
@@ -113,7 +111,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
         fetch(`${urlBase}/searchcontact.${extension}`, {
             method: 'POST',
-            body: JSON.stringify({ type: "search", searchTerm: searchTerm }), 
+            body: JSON.stringify({ 
+                userId: userId,
+                type: "getset",
+                firstName: searchTerm
+            }), 
             headers: { "Content-Type": "application/json" }
         })
         .then(response => response.json())
