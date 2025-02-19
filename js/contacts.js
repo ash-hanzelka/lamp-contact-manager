@@ -3,23 +3,23 @@ document.addEventListener("DOMContentLoaded", function () {
     const addContactForm = document.getElementById('addcontactform');
     const toggleFormButton = document.getElementById('toggleformbutton');
     const cancelFormButton = document.getElementById('cancelForm');
-
-
     const searchInput = document.getElementById('searchInput');
+
+    // edit
     // delete
 
-    // Define API base URL and extension
     var urlBase = "http://ultrausefulcontactmanager.site/LAMPAPI";
     var extension = "php";
 
     // trying local storage
     var userId = localStorage.getItem("userId");
 
-    // fetch
+    // fetch - comment this out for testing the frontend contacts page locally
     if (!userId) {
         window.location.href = "index.html"; // redirect
-        return;
+        return; 
     }
+   
     function fetchContacts() {
         fetch(`${urlBase}/searchcontact.${extension}`, {
             method: 'POST',
@@ -46,6 +46,10 @@ document.addEventListener("DOMContentLoaded", function () {
                 <h3>${contact.firstName} ${contact.lastName}</h3>
                 <p>Email: ${contact.email}</p>
                 <p>Phone: ${contact.phone}</p>
+                <div class="contact-actions">
+                    <button class="edit-button">✏️</button>
+                    <button class="delete-button">🗑️</button>
+                </div>
             </div>
         `).join('');
     }
@@ -98,7 +102,6 @@ document.addEventListener("DOMContentLoaded", function () {
         })
         .catch(error => console.error("Error:", error));
     });
-    // TO DO
     searchInput.addEventListener('input', function () {
         let searchTerm = searchInput.value.trim(); 
         if (searchTerm === "") {
@@ -132,13 +135,3 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
-
-
-// fetch
-// search
-// add
-// display contact
-    // delete
-    // edit
-        // showing the edit form
-        // cancel
