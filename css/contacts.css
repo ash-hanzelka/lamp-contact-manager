@@ -49,7 +49,7 @@ body {
     padding: 15px;
     border: none;
     border-radius: 10px;
-    background-color: #f0f4ff;
+    background-color: #E9EFF4;
     font-size: 16px;
     outline: none;
     border: 2px solid #9FBAF1;
@@ -64,7 +64,7 @@ body {
 
 /* Contact Card */
 .contact-card {
-    background-color: #f0f4ff;
+    background-color: #E9EFF4;
     border: 2px solid #9FBAF1;
     padding: 20px;
     border-radius: 10px;
@@ -90,7 +90,45 @@ body {
     gap: 10px;
     margin-top: 10px;
 }
+/* add contact form */
+form {
+    background-color: #E9EFF4;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+form input {
+    background-color: #FFFFFF;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    outline: none;
+    border: 1px solid #9FBAF1;
+}
+form input:focus {
+    border: 1.5px solid #9FBAF1;
+}
 
+.form-buttons {
+    display: flex;
+    gap: 10px;
+}
+.form-buttons button {
+    background-color: #9FBAF1;
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+}
+/* contacts */
 .contact-actions button {
     background-color: #c5d3ff;
     border: none;

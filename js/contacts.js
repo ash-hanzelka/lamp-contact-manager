@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!userId) {
         window.location.href = "index.html"; // redirect
         return; 
-    }
+    } 
    
     function fetchContacts() {
         fetch(`${urlBase}/searchcontact.${extension}`, {
