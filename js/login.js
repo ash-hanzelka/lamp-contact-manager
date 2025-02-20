@@ -10,18 +10,17 @@ function doLogin() {
     // get text entries
     var username = document.getElementById("loginName").value;
     var password = document.getElementById("loginPassword").value;
-    // var hash = md5(password); hash of password
-
+    var hash = md5(password); // hash of password
+    console.log(hash);
     // check login
     if (checkLogin(username, password)) {
         return;
     }
-
     // clear previous login errors
     document.getElementById("loginResult").innerHTML = "";
 
     // store username and hashed password in JSON
-    var jsonPayload = JSON.stringify({ "username": username, "password": password });
+    var jsonPayload = JSON.stringify({ "username": username, "password": hash });
     var url = urlBase + '/signin.' + extension;
 
     // make HTTP request
@@ -32,7 +31,7 @@ function doLogin() {
     // wait for response
     // Handle server response
     xhr.onreadystatechange = function () {
-        if (this.readyState == 4) {
+        if (this.readyState == 4 && this.status == 200) {
             if (this.status == 200) {
                 try {
                     var jsonObject = JSON.parse(xhr.responseText);
@@ -52,9 +51,11 @@ function doLogin() {
 
                     let firstName = jsonObject.firstname;
                     let lastName = jsonObject.lastname;
+                    // trying local storage
+                    localStorage.setItem("userId", userId);
+                    localStorage.setItem("firstName", firstName);
+                    localStorage.setItem("lastName", lastName);
 
-                    // TODO: FIX THIS FUNCTION CALL - cookie.js 
-                    saveCookie();
 
                     // Redirect to contacts page after successful login
                     window.location.href = "contacts.html";

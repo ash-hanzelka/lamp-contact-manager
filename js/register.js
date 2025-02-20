@@ -12,6 +12,8 @@ function doRegister() {
     // get input values
     var username = document.getElementById("registerUsername").value;
     var password = document.getElementById("registerPassword").value;
+    var firstName = document.getElementById("firstName").value;
+    var lastName = document.getElementById("lastName").value;
     var confirmPassword = document.getElementById("confirmPassword").value;
     var firstName = document.getElementById("registerFirstName").value;  
     var lastName = document.getElementById("registerLastName").value;   
@@ -23,7 +25,7 @@ function doRegister() {
 
     // hash the password
     var hash = md5(password); // hashing password
-
+    console.log(hash);
     // prepare data to send
     
     var jsonPayload = JSON.stringify({

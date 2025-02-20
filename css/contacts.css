@@ -1,0 +1,147 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Gabarito', sans-serif;
+}
+body {
+    background-color: #232E49;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.container {
+    width: 100%;
+    max-width: 800px;
+    padding: 20px;
+}
+.contactsheader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.contactsheader h1 {
+    color: white;
+}
+
+/* add */ 
+.hidden-form {
+    display: none;
+}
+
+.addcontacts {
+    background-color: #DEE99B;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+}
+.addcontacts:hover {
+    background-color: #a6c36c;
+}
+
+/* search bar */
+.search-container input {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    background-color: #E9EFF4;
+    font-size: 16px;
+    outline: none;
+    border: 2px solid #9FBAF1;
+    margin-bottom: 25px;
+}
+
+.contacts-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Contact Card */
+.contact-card {
+    background-color: #E9EFF4;
+    border: 2px solid #9FBAF1;
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.contact-card h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #1e2738;
+}
+
+.contact-card p {
+    font-size: 14px;
+    color: #1e2738;
+}
+
+/* edit and delete buttons */
+.contact-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+/* add contact form */
+form {
+    background-color: #E9EFF4;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+form input {
+    background-color: #FFFFFF;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    outline: none;
+    border: 1px solid #9FBAF1;
+}
+form input:focus {
+    border: 1.5px solid #9FBAF1;
+}
+
+.form-buttons {
+    display: flex;
+    gap: 10px;
+}
+.form-buttons button {
+    background-color: #9FBAF1;
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+}
+/* contacts */
+.contact-actions button {
+    background-color: #c5d3ff;
+    border: none;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+}
+
+.contact-actions button:hover {
+    background-color: #9FBAF1;
+}

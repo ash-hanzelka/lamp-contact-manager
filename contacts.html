@@ -3,8 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Gabarito:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/contacts.css">
 </head>
 <body>
-    <h1>Hello, World!</h1>
+    <div class="container">
+        <div class="contactsheader">
+            <h1>CONTACT MANAGER</h1>
+            <button id="toggleformbutton" class="addcontacts">+ ADD CONTACT</button>
+        </div>
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Search Contacts">
+        </div>
+        <form id="addcontactform" class="hidden-form">
+            <input type="text" placeholder="First Name" id="firstName" required>
+            <input type="text" placeholder="Last Name" id="lastName" required>
+            <input type="email" placeholder="Email" id="email" required pattern="^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$">
+            <input type="text" placeholder="Phone Number (xxx-xxx-xxxx)" id="phone" required pattern="^(1-)?\d{3}-\d{3}-\d{4}$">
+            <div class="form-buttons">
+                <button type="submit">Save Contact</button>
+                <button type="button" id="cancelForm">Cancel</button>
+            </div>
+        </form>
+        <div class="contacts-list" id="contactsList"></div>
+    </div>
+
+
+
+    <script src="js/contacts.js"></script>
 </body>
 </html>
