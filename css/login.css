@@ -78,6 +78,14 @@ body{
     text-decoration: underline;
 }
 
+#particles-js {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #232E49;
+    z-index: -1;
+}
+
 @media screen and (max-width: 768px) {
     .container {
         max-width: 90%;

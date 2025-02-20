@@ -18,23 +18,24 @@
         
         <div class="button-container">
             <a href="index.html" class="btn">Login/Register</a>
-            <a href="#" class="btn code-btn" onclick="checkAdminPassword()">View Code</a>
+            <!-- <a href="#" class="btn code-btn" onclick="checkAdminPassword()">View Code</a> -->
+            <a href="#" class="btn code-btn">View Code</a>
         </div>
     </div>
 
     <script>
 
-        // adding a password to access the code
-        function checkAdminPassword() {
-            const correctPassword = "adminpassword"; 
-            const userInput = prompt("Enter admin password:");
+        // // adding a password to access the code
+        // function checkAdminPassword() {
+        //     const correctPassword = "adminpassword"; 
+        //     const userInput = prompt("This feature is only accessable to admins. Please enter admin password:");
 
-            if (userInput === correctPassword) {
-                window.location.href = "https://github.com/nelson-ricardo/lamp-contact-manager";
-            } else {
-                alert("Incorrect password. Access denied.");
-            }
-        }
+        //     if (userInput === correctPassword) {
+        //         window.open("https://github.com/nelson-ricardo/lamp-contact-manager", "_blank");
+        //     } else {
+        //         alert("Incorrect password. Access denied.");
+        //     }
+        // }
 
         particlesJS("particles-js", {
             "particles": {
