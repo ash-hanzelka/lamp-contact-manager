@@ -3,32 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Manager - Login</title>
-    <!-- Importing the font API -->
-    <link href="https://fonts.googleapis.com/css2?family=Gabarito:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/login.css">
+    <title>Ultra Useful - Contact Manager</title>
+    <link rel="stylesheet" href="css/homepage.css">
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Gabarito:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Container that's holding the login-->
+    <div id="particles-js"></div>
+
     <div class="container">
-        <!-- Login card -->
-        <div class="login-card">
-            <h1>LOGIN</h1>
-            <form id="loginForm">
-                <span id="loginResult"></span> <!-- error -->
-                <input type="text" id="loginName" placeholder="Username" required>
-                <input type="password" id="loginPassword" placeholder="Password" required>
-                <button type="button" id="loginButton" class="buttons" onclick="doLogin();">LOGIN</button>
-            </form>
-                <!--Link to the sign up page -->
-            <a href="register.html">
-                <p>Don't have an account? Sign up!</p>
-            </a>            
+        <img src="images/alien.PNG" alt="Alien in UFO" class="logo">
+        <h1 class="title">ULTRA USEFUL</h1>
+        <p class="subtitle">Contact Manager</p>
+        
+        <div class="button-container">
+            <a href="index.html" class="btn">Login/Register</a>
+            <a href="#" class="btn code-btn" onclick="checkAdminPassword()">View Code</a>
         </div>
     </div>
-    <!--js script here  -->  
-    <script src="js/md5.js"></script>
-    <script src="js/cookie.js"></script>
-    <script src="js/login.js"></script>  
+
+    <script>
+
+        // adding a password to access the code
+        function checkAdminPassword() {
+            const correctPassword = "adminpassword"; 
+            const userInput = prompt("Enter admin password:");
+
+            if (userInput === correctPassword) {
+                window.location.href = "https://github.com/nelson-ricardo/lamp-contact-manager";
+            } else {
+                alert("Incorrect password. Access denied.");
+            }
+        }
+
+        particlesJS("particles-js", {
+            "particles": {
+                "number": {
+                    "value": 100,
+                    "density": { "enable": true, "value_area": 800 }
+                },
+                "color": { 
+                    "value": ["#DEE99B", "#E9EFF4", "#FFFFFF", "#9FBAF1"]  
+                },
+                "shape": {
+                    "type": "circle",
+                    "stroke": { "width": 0, "color": "#000000" },
+                    "polygon": { "nb_sides": 5 }
+                },
+                "opacity": { "value": 0.7, "random": true },
+                "size": { "value": 3, "random": true },
+                "move": { 
+                    "enable": true, 
+                    "speed": 2, 
+                    "direction": "none", 
+                    "random": true, 
+                    "straight": false 
+                },
+                "line_linked": { "enable": false }  
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": { 
+                    "onhover": { "enable": true, "mode": "bubble" },
+                    "onclick": { "enable": true, "mode": "push" }
+                },
+                "modes": {
+                    "bubble": { "distance": 200, "size": 6, "duration": 1, "opacity": 1, "speed": 3 },
+                    "push": { "particles_nb": 4 }
+                }
+            },
+            "retina_detect": true
+        });
+    </script>
 </body>
 </html>
