@@ -15,10 +15,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (!userId) {
         window.location.href = "index.html";
-        return; 
+        return;
     }
 
-    let contactToDelete = null; // stores the contact  deleted
+    let contactToDelete = null; 
 
     function fetchContacts() {
         fetch(`${urlBase}/searchcontact.${extension}`, {
@@ -71,7 +71,7 @@ document.addEventListener("DOMContentLoaded", function () {
         deleteConfirmPopup.classList.add("show");
     }
 
-
+    
     confirmDeleteButton.addEventListener("click", function () {
         if (contactToDelete) {
             fetch(`${urlBase}/deletecontact.${extension}`, {
@@ -92,13 +92,57 @@ document.addEventListener("DOMContentLoaded", function () {
         deleteConfirmPopup.classList.remove("show");
     });
 
-    /** cancel **/
     cancelDeleteButton.addEventListener("click", function () {
         deleteConfirmPopup.classList.remove("show");
     });
 
+    toggleFormButton.addEventListener("click", () => {
+        if (addContactForm.classList.contains("hidden-form")) {
+            addContactForm.classList.remove("hidden-form"); 
+        } else {
+            addContactForm.classList.add("hidden-form"); // ide form
+            addContactForm.reset();
+        }
+    });
+
+    cancelFormButton.addEventListener("click", () => {
+        addContactForm.classList.add("hidden-form");
+        addContactForm.reset();
+    });
+
+    addContactForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const contactData = {
+            userId: userId,
+            firstName: document.getElementById("firstName").value.trim(),
+            lastName: document.getElementById("lastName").value.trim(),
+            email: document.getElementById("email").value.trim(),
+            phone: document.getElementById("phone").value.trim()
+        };
+
+        fetch(`${urlBase}/newcontact.${extension}`, {
+            method: "POST",
+            body: JSON.stringify(contactData),
+            headers: { "Content-Type": "application/json" }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === "success") {
+                alert("Contact added successfully!");
+                fetchContacts();
+                addContactForm.classList.add("hidden-form");
+                addContactForm.reset();
+            } else {
+                alert("Error: " + data.msg);
+            }
+        })
+        .catch(error => console.error("Error:", error));
+    });
+
     fetchContacts();
 });
+
 
 
 // FOR LOCAL TESTING -----------------------------------------------------------------------------------
