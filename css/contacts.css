@@ -5,12 +5,13 @@
     font-family: 'Gabarito', sans-serif;
 }
 body {
-    background-color: #232E49;
+    background-color: #1e2738;
     min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-}
+    padding: 20px;
+  }
 .container {
     width: 100%;
     max-width: 800px;
@@ -25,14 +26,12 @@ body {
 .contactsheader h1 {
     color: white;
 }
-
-/* add */ 
 .hidden-form {
     display: none;
 }
 
 .addcontacts {
-    background-color: #DEE99B;
+    background-color: #d4e5a5;
     border: none;
     padding: 10px 20px;
     border-radius: 10px;
@@ -40,66 +39,47 @@ body {
     font-weight: 600;
 }
 .addcontacts:hover {
-    background-color: #a6c36c;
+    background-color: #b5d37a; 
 }
 
-/* search bar */
 .search-container input {
     width: 100%;
-    padding: 15px;
+    padding: 12px;
     border: none;
     border-radius: 10px;
-    background-color: #E9EFF4;
+    background-color: #f0f4ff;
     font-size: 16px;
     outline: none;
     border: 2px solid #9FBAF1;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
 }
-
 .contacts-list {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 10px;
 }
 
-/* Contact Card */
 .contact-card {
-    background-color: #E9EFF4;
-    border: 2px solid #9FBAF1;
+    background-color: #f0f4ff;
     padding: 15px;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    justify-content: space-between;
-    height: 170px;
+    gap: 5px;
 }
-
 .contact-card h3 {
-    font-size: 45px;
+    font-size: 18px;
     font-weight: 600;
-    color: #1e2738;
+    color: #333;
 }
 
 .contact-card p {
-    font-size: 20px;
-    color: #1e2738;
+    font-size: 14px;
+    color: #555;
 }
 
-/* edit and delete buttons */
-.contact-actions {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 100px;
-    justify-content: flex-end;
-    /* align-items: center; */
-}
-
-
-
-/* add contact form */
 form {
-    background-color: #E9EFF4;
+    background-color: #f0f4ff;
     padding: 15px;
     border-radius: 10px;
     margin-bottom: 15px;
@@ -108,19 +88,17 @@ form {
     gap: 10px;
 }
 form input {
-    background-color: #FFFFFF;
     width: 100%;
     padding: 10px;
     border: none;
     border-radius: 5px;
     font-size: 14px;
     outline: none;
-    border: 1px solid #9FBAF1;
+    border: 1px solid #ccc;
 }
 form input:focus {
-    border: 1.5px solid #9FBAF1;
+    border: 2px solid #9FBAF1;
 }
-
 .form-buttons {
     display: flex;
     gap: 10px;
@@ -134,105 +112,4 @@ form input:focus {
     cursor: pointer;
     font-size: 14px;
     font-weight: 600;
-}
-/* contacts */
-.contact-actions button {
-    background-color: #c5d3ff;
-    border: none;
-    width: 35px;
-    height: 35px;
-    border-radius: 50%;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 16px;
-}
-
-.contact-actions button:hover {
-    background-color: #9FBAF1;
-}
-
-/* delete and edit icons */
-.icon-blue {
-    color: rgb(80, 136, 239);
-}
-
-/* turn the delete icon red when hover*/
-.delete-button:hover i {
-    color: rgb(184, 8, 8);
-}
-
-/* turn the delete icon red when hover*/
-.edit-button:hover i {
-    color: rgb(57, 97, 165);
-}
-
-
-
-
-/* pop up to confirm contact deletion */
-.popup {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(21, 21, 22, 0.7);
-    display: none; 
-    justify-content: center;
-    align-items: center;
-    z-index: 1000; 
-}
-
-.popup.show {
-    display: flex; 
-}
-
-.popup-content {
-    background: #dcedb4;
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
-    max-width: 300px;
-    width: 100%;
-    color: #232E49;
-    border: 5px solid #232E49;
-}
-
-#deleteConfirmPopup {
-    display: none; 
-}
-#deleteConfirmPopup.show {
-    display: block; 
-}
-
-
-/* sort by buttons */
-.sort-button {
-    margin: 0 5px;
-    padding: 20px;
-    border: none;
-    background-color: lightgray; /* default color */
-    cursor: pointer;
-    border-radius: 5px;
-}
-
-.sort-button.active {
-    background-color: #007bff; /* color for the active button */
-    color: white; /* text color for active button */
-}
-
-.sort-container {
-    margin: 20px 0; /* Add margin for spacing if needed */
-}
-
-.sort-container label {
-    color: white; /* Change label color to white */
-    margin-right: 10px; /* Optional: add space between label and buttons */
-}
-
-.sort-button:hover {
-    background-color: #0056b3; /* Darker shade on hover */
-    color: white; /* Maintain text color on hover */
 }
