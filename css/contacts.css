@@ -24,7 +24,7 @@ body {
 }
 .contactsheader h1 {
     color: white;
-    font-size: 24px;
+    font-size: 2rem;
 }
 
 /* add */ 
@@ -77,7 +77,7 @@ body {
 }
 
 .contact-card h3 {
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: 600;
     color: #1e2738;
 }
