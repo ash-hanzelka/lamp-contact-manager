@@ -5,134 +5,100 @@ document.addEventListener("DOMContentLoaded", function () {
     const cancelFormButton = document.getElementById('cancelForm');
     const searchInput = document.getElementById('searchInput');
 
+    const deleteConfirmPopup = document.getElementById("deleteConfirmPopup");
+    const confirmDeleteButton = document.getElementById("confirmDeleteButton");
+    const cancelDeleteButton = document.getElementById("cancelDeleteButton");
 
     var urlBase = "http://ultrausefulcontactmanager.site/LAMPAPI";
     var extension = "php";
-
-    // trying local storage
     var userId = localStorage.getItem("userId");
 
-    // fetch - comment this out for testing the frontend contacts page locally
     if (!userId) {
-        window.location.href = "index.html"; // redirect
+        window.location.href = "index.html";
         return; 
-    } 
-   
+    }
+
+    let contactToDelete = null; // stores the contact  deleted
+
     function fetchContacts() {
         fetch(`${urlBase}/searchcontact.${extension}`, {
-            method: 'POST',
-            body: JSON.stringify({ userId: userId, type: "getall" }), 
+            method: "POST",
+            body: JSON.stringify({ userId: userId, type: "getall" }),
             headers: { "Content-Type": "application/json" }
         })
         .then(response => response.json())
         .then(data => {
             if (data.numRows === 0) {
                 contactsList.innerHTML = '<p style="color: white; font-size: 16px; text-align: center;">No contacts found.</p>';
-            } else if (Array.isArray(data.Contacts)) {
-                displayContacts(data.Contacts);
             } else {
-                console.error("Unexpected response:", data);
+                displayContacts(data.Contacts);
             }
         })
         .catch(error => console.error("Error fetching contacts:", error));
     }
 
-    // display contacts
     function displayContacts(contacts) {
         contactsList.innerHTML = contacts.map(contact => `
-            <div class="contact-card">
+            <div class="contact-card" data-email="${contact.email}" data-firstname="${contact.firstName}" data-lastname="${contact.lastName}" data-phone="${contact.phone}">
                 <h3>${contact.firstName} ${contact.lastName}</h3>
                 <p>Email: ${contact.email}</p>
                 <p>Phone: ${contact.phone}</p>
                 <div class="contact-actions">
                     <button class="edit-button"><i class="fas fa-edit icon-blue"></i></button>
-                    <button class="delete-button"><i class="fas fa-trash-alt icon-blue"></i></button>
+                    <button class="delete-button">
+                        <i class="fas fa-trash-alt icon-blue"></i>
+                    </button>
                 </div>
             </div>
         `).join('');
+
+        document.querySelectorAll(".delete-button").forEach(button => {
+            button.addEventListener("click", function () {
+                const contactCard = button.closest(".contact-card");
+                contactToDelete = {
+                    userId: userId,
+                    firstName: contactCard.getAttribute("data-firstname"),
+                    lastName: contactCard.getAttribute("data-lastname"),
+                    email: contactCard.getAttribute("data-email"),
+                    phone: contactCard.getAttribute("data-phone")
+                };
+                showDeletePopup();
+            });
+        });
     }
 
-    // toggle add form
-    toggleFormButton.addEventListener('click', () => {
-    if (addContactForm.classList.contains('hidden-form')) {
-        addContactForm.classList.remove('hidden-form'); // show
-    } 
-    else {
-        addContactForm.classList.add('hidden-form'); 
-        addContactForm.reset();
+    function showDeletePopup() {
+        deleteConfirmPopup.classList.add("show");
     }
-});
 
-    // toggle add contacts
 
-    // cancel add 
-    cancelFormButton.addEventListener('click', () => {
-        addContactForm.classList.add('hidden-form');
-        addContactForm.reset();
-    });
-
-    // add new contact
-    addContactForm.addEventListener('submit', function (e) {
-        e.preventDefault();
-
-        const contactData = {
-            userId: userId, 
-            firstName: document.getElementById('firstName').value.trim(),
-            lastName: document.getElementById('lastName').value.trim(),
-            email: document.getElementById('email').value.trim(),
-            phone: document.getElementById('phone').value.trim()
-        };
-        fetch(`${urlBase}/newcontact.${extension}`, {
-            method: 'POST',
-            body: JSON.stringify(contactData),
-            headers: { 'Content-Type': 'application/json' }
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.status === "success") {
-                alert("Contact added successfully!");
-                fetchContacts(); 
-                addContactForm.classList.add('hidden-form');
-                addContactForm.reset();
-            } else {
-                alert("Error: " + data.msg);
-            }
-        })
-        .catch(error => console.error("Error:", error));
-    });
-    searchInput.addEventListener('input', function () {
-        let searchTerm = searchInput.value.trim(); 
-        if (searchTerm === "") {
-            fetchContacts(); 
-            return;
+    confirmDeleteButton.addEventListener("click", function () {
+        if (contactToDelete) {
+            fetch(`${urlBase}/deletecontact.${extension}`, {
+                method: "POST",
+                body: JSON.stringify(contactToDelete),
+                headers: { "Content-Type": "application/json" }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === "success") {
+                    fetchContacts();
+                } else {
+                    alert("Error deleting contact: " + data.msg);
+                }
+            })
+            .catch(error => console.error("Error deleting contact:", error));
         }
-
-        fetch(`${urlBase}/searchcontact.${extension}`, {
-            method: 'POST',
-            body: JSON.stringify({ 
-                userId: userId,
-                type: "getset",
-                firstName: searchTerm
-            }), 
-            headers: { "Content-Type": "application/json" }
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.numRows === 0) {
-                contactsList.innerHTML = '<p style="color: white; font-size: 16px; text-align: center;">No contacts found.</p>';
-            } 
-            else {
-                displayContacts(data.Contacts);
-            }
-        })
-        .catch(error => console.error("Error searching contacts:", error));
+        deleteConfirmPopup.classList.remove("show");
     });
 
-    // load contacts
+    /** cancel **/
+    cancelDeleteButton.addEventListener("click", function () {
+        deleteConfirmPopup.classList.remove("show");
+    });
+
     fetchContacts();
 });
-
-
 
 
 // FOR LOCAL TESTING -----------------------------------------------------------------------------------
