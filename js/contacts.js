@@ -139,6 +139,33 @@ document.addEventListener("DOMContentLoaded", function () {
         })
         .catch(error => console.error("Error:", error));
     });
+    searchInput.addEventListener('input', function () {
+        let searchTerm = searchInput.value.trim(); 
+        if (searchTerm === "") {
+            fetchContacts(); 
+            return;
+        }
+
+        fetch(`${urlBase}/searchcontact.${extension}`, {
+            method: 'POST',
+            body: JSON.stringify({ 
+                userId: userId,
+                type: "getset",
+                firstName: searchTerm
+            }), 
+            headers: { "Content-Type": "application/json" }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.numRows === 0) {
+                contactsList.innerHTML = '<p style="color: white; font-size: 16px; text-align: center;">No contacts found.</p>';
+            } 
+            else {
+                displayContacts(data.Contacts);
+            }
+        })
+        .catch(error => console.error("Error searching contacts:", error));
+    });
 
     fetchContacts();
 });
