@@ -89,6 +89,9 @@ body {
     font-size: 1rem;
     color: #1e2738;
 }
+.contact-card p:first-of-type {
+    margin-top: 0.1rem; 
+}
 
 /* edit and delete buttons */
 .contact-actions {
