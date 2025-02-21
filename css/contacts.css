@@ -72,8 +72,7 @@ body {
     border-radius: 10px;
     display: flex;
     flex-direction: column;
-    gap: 5px;
-    justify-content: space-between;
+    gap: 10px;
     height: 170px;
     position: relative;
 }
