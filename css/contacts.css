@@ -74,6 +74,7 @@ body {
     gap: 10px;
     justify-content: space-between;
     height: 170px;
+    position: relative;
 }
 
 .contact-card h3 {
@@ -96,6 +97,7 @@ body {
     gap: 10px;
     bottom: 10px;
     justify-content: flex-end;
+    position: absolute
     /* align-items: center; */
 }
 
