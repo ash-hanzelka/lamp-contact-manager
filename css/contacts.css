@@ -71,7 +71,7 @@ body {
     border-radius: 10px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 5px;
     justify-content: space-between;
     height: 170px;
     position: relative;
@@ -88,9 +88,6 @@ body {
 .contact-card p {
     font-size: 1rem;
     color: #1e2738;
-}
-.contact-card p:first-of-type {
-    margin-top: 0.1rem; 
 }
 
 /* edit and delete buttons */
