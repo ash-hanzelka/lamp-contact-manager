@@ -45,8 +45,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 <p>Email: ${contact.email}</p>
                 <p>Phone: ${contact.phone}</p>
                 <div class="contact-actions">
-                    <button class="edit-button"><i class="fas fa-edit icon-blue"></i></button>
-                    <button class="delete-button"><i class="fas fa-trash-alt icon-blue"></i></button>
+                    <button class="edit-button">✏️</button>
+                    <button class="delete-button">🗑️</button>
                 </div>
             </div>
         `).join('');
