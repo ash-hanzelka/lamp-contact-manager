@@ -66,21 +66,23 @@ body {
 .contact-card {
     background-color: #E9EFF4;
     border: 2px solid #9FBAF1;
-    padding: 20px;
+    padding: 15px;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
     gap: 10px;
+    justify-content: space-between;
+    height: 170px;
 }
 
 .contact-card h3 {
-    font-size: 18px;
+    font-size: 45px;
     font-weight: 600;
     color: #1e2738;
 }
 
 .contact-card p {
-    font-size: 14px;
+    font-size: 20px;
     color: #1e2738;
 }
 
@@ -88,8 +90,13 @@ body {
 .contact-actions {
     display: flex;
     gap: 10px;
-    margin-top: 10px;
+    margin-bottom: 100px;
+    justify-content: flex-end;
+    /* align-items: center; */
 }
+
+
+
 /* add contact form */
 form {
     background-color: #E9EFF4;
@@ -144,4 +151,85 @@ form input:focus {
 
 .contact-actions button:hover {
     background-color: #9FBAF1;
+}
+
+/* delete and edit icons */
+.icon-blue {
+    color: rgb(80, 136, 239);
+}
+
+/* turn the delete icon red when hover*/
+.delete-button:hover i {
+    color: rgb(184, 8, 8);
+}
+
+/* turn the delete icon red when hover*/
+.edit-button:hover i {
+    color: rgb(57, 97, 165);
+}
+
+
+
+
+/* pop up to confirm contact deletion */
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(21, 21, 22, 0.7);
+    display: none; 
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; 
+}
+
+.popup.show {
+    display: flex; 
+}
+
+.popup-content {
+    background: #dcedb4;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    max-width: 300px;
+    width: 100%;
+    color: #232E49;
+    border: 5px solid #232E49;
+}
+
+#deleteConfirmPopup .popup-content button {
+    margin: 1px; 
+}
+
+
+/* sort by buttons */
+.sort-button {
+    margin: 0 5px;
+    padding: 20px;
+    border: none;
+    background-color: lightgray; /* default color */
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.sort-button.active {
+    background-color: #007bff; /* color for the active button */
+    color: white; /* text color for active button */
+}
+
+.sort-container {
+    margin: 20px 0; /* Add margin for spacing if needed */
+}
+
+.sort-container label {
+    color: white; /* Change label color to white */
+    margin-right: 10px; /* Optional: add space between label and buttons */
+}
+
+.sort-button:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+    color: white; /* Maintain text color on hover */
 }
