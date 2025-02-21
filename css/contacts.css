@@ -114,6 +114,15 @@ form input:focus {
     font-weight: 600;
 }
 
+/* edit and delete buttons */
+.contact-actions {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 100px;
+    justify-content: flex-end;
+    /* align-items: center; */
+}
+
 /* adding back delete */
 /* pop up to confirm contact deletion */
 .popup {
@@ -149,4 +158,19 @@ form input:focus {
 }
 #deleteConfirmPopup.show {
     display: block; 
+}
+
+/* delete and edit icons */
+.icon-blue {
+    color: rgb(80, 136, 239);
+}
+
+/* turn the delete icon red when hover*/
+.delete-button:hover i {
+    color: rgb(184, 8, 8);
+}
+
+/* turn the delete icon red when hover*/
+.edit-button:hover i {
+    color: rgb(57, 97, 165);
 }
