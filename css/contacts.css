@@ -200,8 +200,11 @@ form input:focus {
     border: 5px solid #232E49;
 }
 
-#deleteConfirmPopup .popup-content button {
-    margin: 1px; 
+#deleteConfirmPopup {
+    display: none; 
+}
+#deleteConfirmPopup.show {
+    display: block; 
 }
 
 
