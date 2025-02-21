@@ -50,7 +50,7 @@ body {
     padding: 15px;
     border: none;
     border-radius: 10px;
-    background-color: #E9EFF4;
+    background-color: #E9EFF4; 
     font-size: 16px;
     outline: none;
     border: 2px solid #9FBAF1;
@@ -82,7 +82,6 @@ body {
     font-weight: 600;
     color: #1e2738;
     margin-top: 0.5rem;
-    margin-bottom: 0.75rem;
 }
 
 .contact-card p {
