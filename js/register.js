@@ -6,8 +6,6 @@ function doRegister() {
     document.getElementById("registerUsername").classList.remove('error');
     document.getElementById("registerPassword").classList.remove('error');
     document.getElementById("confirmPassword").classList.remove('error');
-    document.getElementById("registerFirstName").classList.remove('error');
-    document.getElementById("registerLastName").classList.remove('error');
 
     // get input values
     var username = document.getElementById("registerUsername").value;
@@ -15,11 +13,9 @@ function doRegister() {
     var firstName = document.getElementById("firstName").value;
     var lastName = document.getElementById("lastName").value;
     var confirmPassword = document.getElementById("confirmPassword").value;
-    var firstName = document.getElementById("registerFirstName").value;  
-    var lastName = document.getElementById("registerLastName").value;   
 
     // check for empty fields or mismatched passwords
-    if (checkRegister(username, password, confirmPassword, firstName, lastName)) {
+    if (checkRegister(username, password, confirmPassword)) {
         return;
     }
 
@@ -63,7 +59,7 @@ function doRegister() {
                     // If registration is successful, show a message and redirect
                     document.getElementById("registerResult").innerHTML = "Registration successful! Redirecting...";
                     setTimeout(() => {
-                        window.location.href = "index.html";
+                        window.location.href = "login.html";
                     }, 1500);
     
                 } catch (error) {
