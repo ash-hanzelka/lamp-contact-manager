@@ -82,6 +82,7 @@ body {
     font-weight: 600;
     color: #1e2738;
     margin-top: 0.5rem;
+    margin-bottom: 0.25rem;
 }
 
 .contact-card p {
@@ -97,7 +98,7 @@ body {
     bottom: 10px;
     justify-content: flex-end;
     position: absolute;
-    right: 10px;
+    right: 15px;
     /* align-items: center; */
 }
 
