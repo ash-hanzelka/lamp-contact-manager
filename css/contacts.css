@@ -10,16 +10,11 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 20px;
 }
-
 .container {
     width: 100%;
-    max-width: 600px;
+    max-width: 800px;
     padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 }
 .contactsheader {
     display: flex;
@@ -29,7 +24,6 @@ body {
 }
 .contactsheader h1 {
     color: white;
-    font-size: 24px;
 }
 
 /* add */ 
@@ -82,13 +76,13 @@ body {
 }
 
 .contact-card h3 {
-    font-size: 20px;
+    font-size: 45px;
     font-weight: 600;
     color: #1e2738;
 }
 
 .contact-card p {
-    font-size: 16px;
+    font-size: 20px;
     color: #1e2738;
 }
 
