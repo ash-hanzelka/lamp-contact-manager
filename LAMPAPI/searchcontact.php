@@ -18,7 +18,7 @@
     // gets all contacts associated with userId. 
     if(strcmp($type, "getall") == 0) {
 
-        $stmt = $conn->prepare("SELECT * FROM Contacts WHERE userid = ?");
+        $stmt = $conn->prepare("SELECT * FROM Contacts WHERE userid = ? ORDER BY firstName");
         $stmt->bind_param("i", $userId);
         $stmt->execute();
         $stmt_result = $stmt->get_result();
@@ -59,7 +59,7 @@
         $firstName = $inData["firstName"].'%';
 
         $stmt = $conn->prepare("SELECT * FROM Contacts WHERE userid = ? AND
-        firstName LIKE ?");
+        firstName LIKE ? ORDER BY firstName");
         $stmt->bind_param("is", $userId, $firstName);
         $stmt->execute();
 
