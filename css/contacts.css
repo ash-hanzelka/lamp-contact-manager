@@ -174,12 +174,12 @@ form input:focus {
 
 /* delete and edit icons */
 .icon-blue {
-  color: #1e2738;
+  color: rgb(80, 136, 239);
 }
 
 /* turn the delete icon red when hover*/
 .delete-button:hover i {
-  color: rgb(205, 68, 68);
+  color: rgb(184, 8, 8);
 }
 
 /* turn the delete icon red when hover*/

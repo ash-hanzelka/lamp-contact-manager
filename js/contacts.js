@@ -199,12 +199,6 @@ document.addEventListener("DOMContentLoaded", function () {
             email: document.getElementById("email").value.trim(),
             phone: document.getElementById("phone").value.trim()
         };
-
-        /* if (!contactData.firstName || !contactData.lastName ||
-            !contactData.email || !contactData.phone) {
-            alert("Please fill in all fields.");
-            return;
-        }  */
   
         fetch(`${urlBase}/newcontact.${extension}`, {
             method: "POST",
