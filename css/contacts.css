@@ -3,35 +3,34 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Gabarito', sans-serif;
-}
-
-body {
+  }
+  
+  body {
     background-color: #232E49;
     min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-.container {
+  }
+  
+  .container {
     width: 100%;
     max-width: 800px;
     padding: 20px;
-}
-
-
-.contactsheader {
+  }
+  
+  .contactsheader {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
-}
-.contactsheader h1 {
+  }
+  .contactsheader h1 {
     color: white;
     font-size: 2rem;
-}
-
-.addcontacts {
+  }
+  
+  .addcontacts {
     background-color: #DEE99B;
     border: none;
     padding: 10px 20px;
@@ -39,12 +38,12 @@ body {
     cursor: pointer;
     font-size: 1rem;
     font-weight: 600;
-}
-.addcontacts:hover {
+  }
+  .addcontacts:hover {
     background-color: #a6c36c;
-}
-
-.search-container input {
+  }
+  
+  .search-container input {
     width: 100%;
     padding: 15px;
     border: none;
@@ -54,15 +53,15 @@ body {
     outline: none;
     border: 2px solid #9FBAF1;
     margin-bottom: 25px;
-}
-
-.contacts-list {
+  }
+  
+  .contacts-list {
     display: flex;
     flex-direction: column;
     gap: 15px;
-}
+  }
 
-.contact-card {
+  .contact-card {
     background-color: #E9EFF4;
     border: 2px solid #9FBAF1;
     padding: 15px;
@@ -72,29 +71,28 @@ body {
     gap: 10px;
     height: 170px;
     position: relative;
-}
-.contact-card h3 {
+  }
+  .contact-card h3 {
     font-size: 1.5rem;
     font-weight: 600;
     color: #1e2738;
     margin-top: 0.5rem;
     margin-bottom: 0.1rem;
-}
-.contact-card p {
+  }
+  .contact-card p {
     font-size: 1rem;
     color: #1e2738;
-}
-
-.contact-actions {
+  }
+  
+  .contact-actions {
     display: flex;
     gap: 10px;
     bottom: 10px;
     justify-content: flex-end;
     position: absolute;
     right: 15px;
-}
-
-.contact-actions button {
+  }
+  .contact-actions button {
     background-color: #c5d3ff;
     border: none;
     width: 35px;
@@ -105,27 +103,25 @@ body {
     align-items: center;
     justify-content: center;
     font-size: 16px;
-}
-.contact-actions button:hover {
+  }
+  .contact-actions button:hover {
     background-color: #9FBAF1;
-}
-.icon-blue {
+  }
+  .icon-blue {
     color: rgb(80, 136, 239);
-}
-
-.delete-button:hover i {
+  }
+  .delete-button:hover i {
     color: rgb(184, 8, 8);
-}
-
-.edit-button:hover i {
+  }
+  .edit-button:hover i {
     color: rgb(57, 97, 165);
-}
-
-.hidden-form {
-    display: none; 
-}
-
-form {
+  }
+  
+  .hidden-form {
+    display: none;
+  }
+  
+  form {
     background-color: #E9EFF4;
     padding: 15px;
     border-radius: 10px;
@@ -133,8 +129,8 @@ form {
     display: flex;
     flex-direction: column;
     gap: 10px;
-}
-form input {
+  }
+  form input {
     background-color: #FFFFFF;
     width: 100%;
     padding: 10px;
@@ -143,15 +139,15 @@ form input {
     font-size: 14px;
     outline: none;
     border: 1px solid #9FBAF1;
-}
-form input:focus {
+  }
+  form input:focus {
     border: 1.5px solid #9FBAF1;
-}
-.form-buttons {
+  }
+  .form-buttons {
     display: flex;
     gap: 10px;
-}
-.form-buttons button {
+  }
+  .form-buttons button {
     flex: 1;
     padding: 10px;
     border: none;
@@ -159,23 +155,23 @@ form input:focus {
     cursor: pointer;
     font-size: 14px;
     font-weight: 600;
-}
-.form-buttons button[type="submit"] {
+  }
+  .form-buttons button[type="submit"] {
     background-color: #9FBAF1; 
     color: #ffffff;
-}
-.form-buttons button[type="submit"]:hover {
+  }
+  .form-buttons button[type="submit"]:hover {
     background-color: #7193c5; 
-}
-.form-buttons button#cancelForm {
+  }
+  .form-buttons button#cancelForm {
     background-color: #232E49;
     color: #ffffff;
-}
-.form-buttons button#cancelForm:hover {
+  }
+  .form-buttons button#cancelForm:hover {
     background-color: #0e1424; 
-}
-
-.popup {
+  }
+  
+  .popup {
     position: fixed;
     top: 0;
     left: 0;
@@ -185,12 +181,12 @@ form input:focus {
     display: none; 
     justify-content: center;
     align-items: center;
-    z-index: 1000; 
-}
-.popup.show {
+    z-index: 1000;
+  }
+  .popup.show {
     display: flex;
-}
-.popup-content {
+  }
+  .popup-content {
     background: #dcedb4;
     padding: 20px;
     border-radius: 10px;
@@ -199,39 +195,38 @@ form input:focus {
     width: 100%;
     color: #232E49;
     border: 5px solid #232E49;
-}
-#deleteConfirmPopup {
+  }
+  #deleteConfirmPopup {
     display: none;
-}
-#deleteConfirmPopup.show {
+  }
+  #deleteConfirmPopup.show {
     display: block;
-}
-
-
-.edit-contact-popup {
+  }
+  
+  .edit-contact-panel {
     position: fixed;
-    bottom: 0;
-    left: 50%;
-    /* below the viewport */
-    transform: translateX(-50%) translateY(100%);
-    width: 90%;
-    max-width: 500px;
+    top: 0;
+    right: 0;
+    width: 300px;
+    max-width: 90%;
+    height: 100%;
     background-color: #E9EFF4;
-    border-radius: 10px 10px 0 0;
+    box-shadow: -2px 0 5px rgba(0,0,0,0.3);
     padding: 20px;
-    z-index: 1001;
-    transition: transform 0.3s ease;
-}
-
-.edit-contact-popup.hidden-popup {
-    transform: translateX(-50%) translateY(100%);
-}
-/* .show, to slide into view */
-.edit-contact-popup.show {
-    transform: translateX(-50%) translateY(0%);
-}
-.edit-contact-popup h2 {
+    z-index: 1100;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  /* test */
+  .edit-contact-panel.hidden {
+    display: none;
+  }
+  
+  .edit-contact-panel h2 {
     color: #1e2738;
-    text-align: center;
     margin-bottom: 10px;
-}
+    text-align: center;
+  }
+  
