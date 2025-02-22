@@ -35,18 +35,6 @@
         </form>
         <div class="contacts-list" id="contactsList"></div>
     </div>
-    
-    <div id="editContactForm" class="edit-form hidden-form">
-        <h2>EDIT CONTACT</h2>
-        <input type="text" id="editFirstName" placeholder="First Name" required>
-        <input type="text" id="editLastName" placeholder="Last Name" required>
-        <input type="email" id="editEmail" placeholder="Email" required>
-        <input type="text" id="editPhone" placeholder="Phone Number" required>
-        <div class="form-buttons">
-            <button id="saveEdit">Save changes</button>
-            <button id="cancelEdit">Cancel</button>
-        </div>
-    </div>
 
     <div id="deleteConfirmPopup" class="popup hidden">
         <div class="popup-content">
@@ -55,6 +43,20 @@
             <button id="confirmDeleteButton">Yes, Delete</button>
             <button id="cancelDeleteButton">Cancel</button>
         </div>
+    </div>
+    
+    <div id="editContactPopup" class="edit-contact-popup">
+        <h2>EDIT CONTACT</h2>
+        <form id="editContactForm">
+            <input type="text" id="editFirstName" placeholder="First Name" required>
+            <input type="text" id="editLastName" placeholder="Last Name" required>
+            <input type="email" id="editEmail" placeholder="Email" required>
+            <input type="text" id="editPhone" placeholder="Phone Number (xxx-xxx-xxxx)" required>
+            <div class="form-buttons">
+                <button type="submit">Save Changes</button>
+                <button type="button" id="cancelEditContactButton">Cancel</button>
+            </div>
+        </form>
     </div>
 
 
