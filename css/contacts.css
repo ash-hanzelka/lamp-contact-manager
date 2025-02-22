@@ -132,7 +132,6 @@ form input:focus {
     gap: 10px;
 }
 .form-buttons button {
-    background-color: #9FBAF1;
     flex: 1;
     padding: 10px;
     border: none;
@@ -155,6 +154,8 @@ form input:focus {
 .form-buttons button#cancelForm:hover {
     background-color: #0e1424; 
 }
+
+
 /* contacts */
 .contact-actions button {
     background-color: #c5d3ff;
