@@ -9,6 +9,10 @@ document.addEventListener("DOMContentLoaded", function () {
     const confirmDeleteButton = document.getElementById("confirmDeleteButton");
     const cancelDeleteButton = document.getElementById("cancelDeleteButton");
 
+    const editContactForm = document.getElementById('editContactForm');
+    const saveEditButton = document.getElementById('saveEdit');
+    const cancelEditButton = document.getElementById('cancelEdit');
+
     var urlBase = "http://ultrausefulcontactmanager.site/LAMPAPI";
     var extension = "php";
     var userId = localStorage.getItem("userId");
@@ -19,6 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     let contactToDelete = null; 
+    let contactToEdit = null;
 
     function fetchContacts() {
         fetch(`${urlBase}/searchcontact.${extension}`, {
@@ -38,19 +43,17 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function displayContacts(contacts) {
-        contactsList.innerHTML = contacts.map(contact => `
-            <div class="contact-card" data-email="${contact.email}" data-firstname="${contact.firstName}" data-lastname="${contact.lastName}" data-phone="${contact.phone}">
+        contactsList.innerHTML = contacts.map(contact => 
+            `<div class="contact-card" data-id="${contact.id}" data-email="${contact.email}" data-firstname="${contact.firstName}" data-lastname="${contact.lastName}" data-phone="${contact.phone}">
                 <h3>${contact.firstName} ${contact.lastName}</h3>
                 <p>Email: ${contact.email}</p>
                 <p>Phone: ${contact.phone}</p>
                 <div class="contact-actions">
                     <button class="edit-button"><i class="fas fa-edit icon-blue"></i></button>
-                    <button class="delete-button">
-                        <i class="fas fa-trash-alt icon-blue"></i>
-                    </button>
+                    <button class="delete-button"><i class="fas fa-trash-alt icon-blue"></i></button>
                 </div>
-            </div>
-        `).join('');
+            </div>`
+        ).join('');
 
         document.querySelectorAll(".delete-button").forEach(button => {
             button.addEventListener("click", function () {
@@ -65,13 +68,32 @@ document.addEventListener("DOMContentLoaded", function () {
                 showDeletePopup();
             });
         });
+
+        document.querySelectorAll(".edit-button").forEach(button => {
+            button.addEventListener("click", function () {
+                const contactCard = button.closest(".contact-card");
+                contactToEdit = {
+                    id: contactCard.getAttribute("data-id"),
+                    firstName: contactCard.getAttribute("data-firstname"),
+                    lastName: contactCard.getAttribute("data-lastname"),
+                    email: contactCard.getAttribute("data-email"),
+                    phone: contactCard.getAttribute("data-phone")
+                };
+
+                document.getElementById("editFirstName").value = contactToEdit.firstName;
+                document.getElementById("editLastName").value = contactToEdit.lastName;
+                document.getElementById("editEmail").value = contactToEdit.email;
+                document.getElementById("editPhone").value = contactToEdit.phone;
+                
+                editContactForm.classList.add("show");
+            });
+        });
     }
 
     function showDeletePopup() {
         deleteConfirmPopup.classList.add("show");
     }
 
-    
     confirmDeleteButton.addEventListener("click", function () {
         if (contactToDelete) {
             fetch(`${urlBase}/deletecontact.${extension}`, {
@@ -100,7 +122,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (addContactForm.classList.contains("hidden-form")) {
             addContactForm.classList.remove("hidden-form"); 
         } else {
-            addContactForm.classList.add("hidden-form"); // ide form
+            addContactForm.classList.add("hidden-form"); 
             addContactForm.reset();
         }
     });
@@ -138,6 +160,36 @@ document.addEventListener("DOMContentLoaded", function () {
         })
         .catch(error => console.error("Error:", error));
     });
+
+    saveEditButton.addEventListener("click", function () {
+        if (!contactToEdit) return;
+
+        let updatedContact = {
+            userId: userId,
+            contactId: contactToEdit.id,
+            firstName: document.getElementById("editFirstName").value.trim(),
+            lastName: document.getElementById("editLastName").value.trim(),
+            email: document.getElementById("editEmail").value.trim(),
+            phone: document.getElementById("editPhone").value.trim()
+        };
+
+        fetch(`${urlBase}/updatecontact.${extension}`, {
+            method: "POST",
+            body: JSON.stringify(updatedContact),
+            headers: { "Content-Type": "application/json" }
+        })
+        .then(response => response.json())
+        .then(() => {
+            fetchContacts();
+            editContactForm.classList.remove("show");
+        })
+        .catch(error => console.error("Error updating contact:", error));
+    });
+
+    cancelEditButton.addEventListener("click", function () {
+        editContactForm.classList.remove("show");
+    });
+
     searchInput.addEventListener('input', function () {
         let searchTerm = searchInput.value.trim(); 
         if (searchTerm === "") {

@@ -35,6 +35,18 @@
         </form>
         <div class="contacts-list" id="contactsList"></div>
     </div>
+    
+    <div id="editContactForm" class="edit-form hidden-form">
+        <h2>EDIT CONTACT</h2>
+        <input type="text" id="editFirstName" placeholder="First Name" required>
+        <input type="text" id="editLastName" placeholder="Last Name" required>
+        <input type="email" id="editEmail" placeholder="Email" required>
+        <input type="text" id="editPhone" placeholder="Phone Number" required>
+        <div class="form-buttons">
+            <button id="saveEdit">Save changes</button>
+            <button id="cancelEdit">Cancel</button>
+        </div>
+    </div>
 
     <div id="deleteConfirmPopup" class="popup hidden">
         <div class="popup-content">
@@ -45,6 +57,11 @@
         </div>
     </div>
 
+
+
+    <script src="js/contacts.js"></script>
+</body>
+</html>
     <!-- <div id="editPopup" class="popup hidden">
         <div class="popup-content">
             <h2>Edit Contact</h2>
@@ -60,8 +77,3 @@
             </form>
         </div>
     </div> -->
-
-
-    <script src="js/contacts.js"></script>
-</body>
-</html>
