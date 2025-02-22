@@ -263,7 +263,6 @@ form input:focus {
   max-width: 300px;
   width: 100%;
   color: #232E49;
-  border: 5px solid #232E49;
 }
 #editForm {
   display: flex;

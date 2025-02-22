@@ -135,6 +135,16 @@ document.addEventListener("DOMContentLoaded", function () {
             email: editEmailInput.value.trim(),
             phone: editPhoneInput.value.trim()
         };
+        // NO CHANGES MADE
+        if (
+            updatedContactData.firstName === contactToEdit.firstName &&
+            updatedContactData.lastName === contactToEdit.lastName &&
+            updatedContactData.email === contactToEdit.email &&
+            updatedContactData.phone === contactToEdit.phone
+        ) {
+            editPopup.classList.remove("show");
+            return;
+        }
         /* if (!updatedContactData.firstName || !updatedContactData.lastName ||
             !updatedContactData.email || !updatedContactData.phone) {
             alert("Please fill in all fields.");
