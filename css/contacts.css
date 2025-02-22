@@ -4,6 +4,7 @@
     box-sizing: border-box;
     font-family: 'Gabarito', sans-serif;
 }
+
 body {
     background-color: #232E49;
     min-height: 100vh;
@@ -11,11 +12,14 @@ body {
     align-items: center;
     justify-content: center;
 }
+
 .container {
     width: 100%;
     max-width: 800px;
     padding: 20px;
 }
+
+
 .contactsheader {
     display: flex;
     justify-content: space-between;
@@ -25,11 +29,6 @@ body {
 .contactsheader h1 {
     color: white;
     font-size: 2rem;
-}
-
-/* add */ 
-.hidden-form {
-    display: none;
 }
 
 .addcontacts {
@@ -45,7 +44,6 @@ body {
     background-color: #a6c36c;
 }
 
-/* search bar */
 .search-container input {
     width: 100%;
     padding: 15px;
@@ -64,7 +62,6 @@ body {
     gap: 15px;
 }
 
-/* Contact Card */
 .contact-card {
     background-color: #E9EFF4;
     border: 2px solid #9FBAF1;
@@ -76,7 +73,6 @@ body {
     height: 170px;
     position: relative;
 }
-
 .contact-card h3 {
     font-size: 1.5rem;
     font-weight: 600;
@@ -84,13 +80,11 @@ body {
     margin-top: 0.5rem;
     margin-bottom: 0.1rem;
 }
-
 .contact-card p {
     font-size: 1rem;
     color: #1e2738;
 }
 
-/* edit and delete buttons */
 .contact-actions {
     display: flex;
     gap: 10px;
@@ -98,12 +92,39 @@ body {
     justify-content: flex-end;
     position: absolute;
     right: 15px;
-    /* align-items: center; */
 }
 
+.contact-actions button {
+    background-color: #c5d3ff;
+    border: none;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+}
+.contact-actions button:hover {
+    background-color: #9FBAF1;
+}
+.icon-blue {
+    color: rgb(80, 136, 239);
+}
 
+.delete-button:hover i {
+    color: rgb(184, 8, 8);
+}
 
-/* add contact form */
+.edit-button:hover i {
+    color: rgb(57, 97, 165);
+}
+
+.hidden-form {
+    display: none; 
+}
+
 form {
     background-color: #E9EFF4;
     padding: 15px;
@@ -126,7 +147,6 @@ form input {
 form input:focus {
     border: 1.5px solid #9FBAF1;
 }
-
 .form-buttons {
     display: flex;
     gap: 10px;
@@ -155,44 +175,6 @@ form input:focus {
     background-color: #0e1424; 
 }
 
-
-/* contacts */
-.contact-actions button {
-    background-color: #c5d3ff;
-    border: none;
-    width: 35px;
-    height: 35px;
-    border-radius: 50%;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 16px;
-}
-
-.contact-actions button:hover {
-    background-color: #9FBAF1;
-}
-
-/* delete and edit icons */
-.icon-blue {
-    color: rgb(80, 136, 239);
-}
-
-/* turn the delete icon red when hover*/
-.delete-button:hover i {
-    color: rgb(184, 8, 8);
-}
-
-/* turn the delete icon red when hover*/
-.edit-button:hover i {
-    color: rgb(57, 97, 165);
-}
-
-
-
-
-/* pop up to confirm contact deletion */
 .popup {
     position: fixed;
     top: 0;
@@ -205,11 +187,9 @@ form input:focus {
     align-items: center;
     z-index: 1000; 
 }
-
 .popup.show {
-    display: flex; 
+    display: flex;
 }
-
 .popup-content {
     background: #dcedb4;
     padding: 20px;
@@ -220,59 +200,35 @@ form input:focus {
     color: #232E49;
     border: 5px solid #232E49;
 }
-
 #deleteConfirmPopup {
-    display: none; 
+    display: none;
 }
 #deleteConfirmPopup.show {
-    display: block; 
+    display: block;
 }
 
 
-/* sort by buttons */
-.sort-button {
-    margin: 0 5px;
-    padding: 20px;
-    border: none;
-    background-color: lightgray; /* default color */
-    cursor: pointer;
-    border-radius: 5px;
-}
-
-.sort-button.active {
-    background-color: #007bff; /* color for the active button */
-    color: white; /* text color for active button */
-}
-
-.sort-container {
-    margin: 20px 0; /* Add margin for spacing if needed */
-}
-
-.sort-container label {
-    color: white; /* Change label color to white */
-    margin-right: 10px; /* Optional: add space between label and buttons */
-}
-
-.sort-button:hover {
-    background-color: #0056b3; /* Darker shade on hover */
-    color: white; /* Maintain text color on hover */
-}
- /* edit css */
 .edit-contact-popup {
     position: fixed;
     bottom: 0;
     left: 50%;
-    transform: translateX(-50%);
+    /* below the viewport */
+    transform: translateX(-50%) translateY(100%);
     width: 90%;
     max-width: 500px;
     background-color: #E9EFF4;
     border-radius: 10px 10px 0 0;
     padding: 20px;
-    display: none; /* hidden by default */
     z-index: 1001;
+    transition: transform 0.3s ease;
 }
+
+.edit-contact-popup.hidden-popup {
+    transform: translateX(-50%) translateY(100%);
+}
+/* .show, to slide into view */
 .edit-contact-popup.show {
-    display: block;
+    transform: translateX(-50%) translateY(0%);
 }
 .edit-contact-popup h2 {
     color: #1e2738;
