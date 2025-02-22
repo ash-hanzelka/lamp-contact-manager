@@ -129,7 +129,6 @@ document.addEventListener("DOMContentLoaded", function () {
         .then(response => response.json())
         .then(data => {
             if (data.status === "success") {
-                alert("Contact added successfully!");
                 fetchContacts();
                 addContactForm.classList.add("hidden-form");
                 addContactForm.reset();

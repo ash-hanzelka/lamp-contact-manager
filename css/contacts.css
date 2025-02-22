@@ -141,6 +141,20 @@ form input:focus {
     font-size: 14px;
     font-weight: 600;
 }
+.form-buttons button[type="submit"] {
+    background-color: #9FBAF1; 
+    color: #ffffff;
+}
+.form-buttons button[type="submit"]:hover {
+    background-color: #7193c5; 
+}
+.form-buttons button#cancelForm {
+    background-color: #232E49;
+    color: #ffffff;
+}
+.form-buttons button#cancelForm:hover {
+    background-color: #0e1424; 
+}
 /* contacts */
 .contact-actions button {
     background-color: #c5d3ff;
