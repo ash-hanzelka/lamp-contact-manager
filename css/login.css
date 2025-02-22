@@ -87,7 +87,7 @@ body{
     z-index: -1;
 }
 
-@media screen and (max-width: 768px) {
+/* @media screen and (max-width: 768px) {
     .container {
         max-width: 90%;
     }
@@ -108,7 +108,7 @@ body{
     .login-card p {
         font-size: 0.7rem;
     }
-}
+} */
 
 #particles-js {
     position: fixed;

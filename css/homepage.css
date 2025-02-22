@@ -49,19 +49,20 @@ body {
 .button-container {
     display: flex;
     justify-content: center;
-    gap: 15px;
-    flex-direction: column;
+    gap: 20px;
+    flex-direction: row;
 }
 
 .btn {
     background-color: #DEE99B;
     color: #1a2333;
     font-weight: 600;
-    padding: 12px 20px;
+    padding: 14px 24px;
     border: none;
-    border-radius: 8px;
+    border-radius: 12px;
     cursor: pointer;
     transition: 0.3s ease;
+    min-width: 180px;
     text-align: center;
 }
 
@@ -69,16 +70,17 @@ body {
     background-color: #a6c36c;
 }
 
-.code-btn {         /*view code button */
-    font-size: 0.8em; 
-    padding: 6px 14px; 
-    background-color: rgba(128, 128, 128, 0.4); 
-    border: 2px solid #464545; 
-    color: rgb(175, 172, 172); 
-    margin: 0 auto;
-    width: 100px;
+
+.code-btn {
+    background-color: #DEE99B;
+    color: #1a2333;
+    font-size: 1rem;
+    font-weight: 700;
+    padding: 14px 24px;
+    border-radius: 12px;
+    border: none;
+    transition: 0.3s ease;
+    text-align: center;
+    min-width: 180px;
 }
 
-.code-btn:hover {
-    background-color: rgba(88, 87, 87, 0.4); /* Darker grey on hover */
-}
