@@ -256,28 +256,53 @@ form input:focus {
   color: white; /* Maintain text color on hover */
 }
 #editPopup .popup-content {
-  background-color: #E9EFF4;  /* same background as add form */
+  background-color: #E9EFF4;
   padding: 20px;
-  border-radius: 10px;
+  border-radius: 20px;
   text-align: center;
-  max-width: 300px;
+  max-width: 350px;
   width: 100%;
+  border: 2px solid #9FBAF1;
   color: #232E49;
 }
+
+#editPopup .popup-content h2 {
+  font-weight: 600; 
+  margin-top: 5px;
+}
+
 #editForm {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  margin-bottom: 15px;
 }
-
 #editForm input {
   background-color: #FFFFFF;
   width: 100%;
-  padding: 10px;
-  border: none;
-  border-radius: 5px;
+  margin-top: 10px;
+  padding: 12px;
+  border: 1px solid #9FBAF1;
+  border-radius: 10px;
   font-size: 14px;
   outline: none;
-  border: 1px solid #9FBAF1;
+}
+
+#editForm .form-buttons button[type="submit"] {
+  background-color:#9FBAF1; 
+  margin-top: 20px;
+  color: white;
+}
+
+#editForm .form-buttons button[type="submit"]:hover {
+  background-color: #7193c5;
+}
+
+#editForm button#cancelEditButton {
+  background-color: #232E49;
+  margin-top: 20px;
+  color: white;
+}
+
+#editForm button#cancelEditButton:hover {
+  background-color: #0e1424;
 }
