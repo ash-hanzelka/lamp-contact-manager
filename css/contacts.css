@@ -101,8 +101,6 @@ body {
   /* align-items: center; */
 }
 
-
-
 /* add contact form */
 form {
   background-color: #E9EFF4;
@@ -257,4 +255,30 @@ form input:focus {
   background-color: #0056b3; /* Darker shade on hover */
   color: white; /* Maintain text color on hover */
 }
-  
+#editPopup .popup-content {
+  background-color: #E9EFF4;  /* same background as add form */
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  max-width: 300px;
+  width: 100%;
+  color: #232E49;
+  border: 5px solid #232E49;
+}
+#editForm {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+#editForm input {
+  background-color: #FFFFFF;
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  outline: none;
+  border: 1px solid #9FBAF1;
+}
