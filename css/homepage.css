@@ -85,7 +85,7 @@ body {
 }
 
 #view-code-btn {
-    background-color: #DEE99B;
+    background-color: #9FBAF1;
     color: #232E49 ;
     font-size: 1rem;
     font-weight: 700;
@@ -98,6 +98,6 @@ body {
 }
 
 #view-code-btn:hover {
-    background-color: #a6c36c;
+    background-color: #7193c5; 
     color: #232E49 ;
 }
