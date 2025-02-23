@@ -84,3 +84,20 @@ body {
     min-width: 180px;
 }
 
+#view-code-btn {
+    background-color: #232E49 ;
+    color: white;
+    font-size: 1rem;
+    font-weight: 700;
+    padding: 14px 24px;
+    border-radius: 12px;
+    border: 2px solid #9FBAF1;
+    transition: 0.3s ease;
+    text-align: center;
+    min-width: 180px;
+}
+
+#view-code-btn:hover {
+    background-color:#9FBAF1;
+    color: #232E49 ;
+}
