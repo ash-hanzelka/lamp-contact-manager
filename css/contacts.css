@@ -217,6 +217,7 @@ form input:focus {
   width: 100%;
   color: #232E49;
   border: 5px solid #232E49;
+  position: relative;
 }
 
 #deleteConfirmPopup {
@@ -224,6 +225,10 @@ form input:focus {
 }
 #deleteConfirmPopup.show {
   display: flex; 
+}
+
+.hidden {
+  display: none;
 }
 
 
