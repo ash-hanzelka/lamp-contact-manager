@@ -223,7 +223,7 @@ form input:focus {
   display: none; 
 }
 #deleteConfirmPopup.show {
-  display: block; 
+  display: flex; 
 }
 
 
