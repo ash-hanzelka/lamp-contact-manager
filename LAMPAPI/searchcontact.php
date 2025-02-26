@@ -71,7 +71,7 @@
 
         $jsonToReturn = [
             "numRows" => $stmt_result->num_rows,
-            "Contacts" => getRowsAsArray($stmt_result)
+            "Contacts" => processLookupAndReturnAsArray($stmt_result, $lookupString)
         ];
 
         returnEncodeJson($jsonToReturn);
@@ -80,6 +80,24 @@
     function returnMsg($string) {
         $retMsg = sprintf('{"msg":"%s"}', $string);
         returnJson($retMsg);
+    }
+
+    function processLookupAndReturnAsArray($sql_res, $string) {
+        $retArray = [];
+
+        while($row = $sqlResult->fetch_assoc()) {
+            if(str_contains($row["firstName"], $string)) {
+                $old_string = $row["firstName"];
+                $new_string = preg_replace('/({$string})/i', '_$1_', $old_string);
+                $row["firstName"] = $new_string;
+            } else {
+                $old_string = $row["lastName"];
+                $new_string = preg_replace('/{($string)}/i', '_$1_', $old_string);
+                $row["lastName"] = $new_string;
+            }
+        }
+
+        array_push($retArray, $row);
     }
 
     function getRowsAsArray($sqlResult) {
