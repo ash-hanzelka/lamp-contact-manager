@@ -103,8 +103,9 @@
         $retString = '';
         $iter_string = str_split($string);
         foreach($iter_string as $letter) {
-            if(ctype_alpha($letter)) {
+            if(ctype_alpha($letter) && !$isCapitalized) {
                 $retString .= strtoupper($letter);
+                $isCapitalized = true;
             } else {
                 $retString .= $letter;
             }
