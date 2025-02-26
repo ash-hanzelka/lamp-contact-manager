@@ -88,10 +88,10 @@
         while($row = $sql_res->fetch_assoc()) {
             if(str_contains(strtoupper($row["firstName"]), strtoupper($string))) {
                 $old_string = explode(strtoupper($string), strtoupper($row["firstName"]), 2);
-                $row["firstName"] = $old_string;
+                $row["firstName"] = ucfirst($old_string[0]. '_'. $string . '_' . $old_string[1]);
             } else {
                 $old_string = explode(strtoupper($string), strtoupper($row["lastName"]), 2);
-                $row["lastName"] = $old_string;
+                $row["lastName"] = ucfirst($old_string[0]. '_'. $string . '_' . $old_string[1]);
             }
             array_push($retArray, $row);
         }
