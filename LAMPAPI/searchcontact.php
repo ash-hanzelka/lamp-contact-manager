@@ -101,7 +101,8 @@
     function capitalizeFirstLetter($string) {
         $isCapitalized = false;
         $retString = '';
-        foreach($string as $letter) {
+        $iter_string = str_split($string, '');
+        foreach($iter_string as $letter) {
             if(ctype_alpha($letter)) {
                 $retString .= strtoupper($letter);
             } else {
