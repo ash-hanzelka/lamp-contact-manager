@@ -95,9 +95,9 @@
                 $new_string = preg_replace('/{($string)}/i', '_$1_', $old_string);
                 $row["lastName"] = $new_string;
             }
+            array_push($retArray, $row);
         }
 
-        array_push($retArray, $row);
     }
 
     function getRowsAsArray($sqlResult) {
