@@ -71,7 +71,7 @@
 
         $jsonToReturn = [
             "numRows" => $stmt_result->num_rows,
-            "Contacts" => processLookupAndReturnAsArray($stmt_result, $lookupString)
+            "Contacts" => processLookupAndReturnAsArray($stmt_result, $inData["firstName"])
         ];
 
         returnEncodeJson($jsonToReturn);
