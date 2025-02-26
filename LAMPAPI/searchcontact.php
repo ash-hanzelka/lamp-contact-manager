@@ -87,10 +87,10 @@
 
         while($row = $sql_res->fetch_assoc()) {
             if(str_contains($row["firstName"], $string)) {
-                $old_string = explode(strtoupper($string), strtoupper($row["firstName"]));
+                $old_string = explode(strtoupper($string), strtoupper($row["firstName"]), 1);
                 $row["firstName"] = $old_string;
             } else {
-                $old_string = explode(strtoupper($string), strtoupper($row["lastName"]));
+                $old_string = explode(strtoupper($string), strtoupper($row["lastName"]), 1);
                 $row["lastName"] = $old_string;
             }
             array_push($retArray, $row);
