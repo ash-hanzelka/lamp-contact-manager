@@ -59,7 +59,7 @@
         $firstName = $inData["firstName"].'%';
 
         $stmt = $conn->prepare("SELECT * FROM Contacts WHERE userid = ? AND
-        firstName LIKE ? ORDER BY firstName");
+        (firstName LIKE ? OR lastName LIKE ?) ORDER BY firstName");
         $stmt->bind_param("is", $userId, $firstName);
         $stmt->execute();
 
