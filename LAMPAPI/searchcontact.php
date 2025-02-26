@@ -88,14 +88,28 @@
         while($row = $sql_res->fetch_assoc()) {
             if(str_contains(strtoupper($row["firstName"]), strtoupper($string))) {
                 $old_string = explode(strtoupper($string), strtoupper($row["firstName"]), 2);
-                $row["firstName"] = ucfirst(strtolower($old_string[0]. '_'. $string . '_' . $old_string[1]));
+                $row["firstName"] = capitalizeFirstLetter(strtolower($old_string[0]. '_'. $string . '_' . $old_string[1]));
             } else {
                 $old_string = explode(strtoupper($string), strtoupper($row["lastName"]), 2);
-                $row["lastName"] = ucfirst(strtolower($old_string[0]. '_'. $string . '_' . $old_string[1]));
+                $row["lastName"] = capitalizeFirstLetter(strtolower($old_string[0]. '_'. $string . '_' . $old_string[1]));
             }
             array_push($retArray, $row);
         }
         return $retArray;
+    }
+
+    function capitalizeFirstLetter($string) {
+        $isCapitalized = false;
+        $retString = '';
+        foreach($string as $letter) {
+            if(ctype_alpha($letter)) {
+                $retString .= strtoupper($letter);
+            } else {
+                $retString .= $letter;
+            }
+        }
+
+        return $retString;
     }
 
     function getRowsAsArray($sqlResult) {
