@@ -90,7 +90,7 @@
                 $old_string = explode($string, $row["firstName"]);
                 $row["firstName"] = $old_string;
             } else {
-                $old_string = explod($string, $row["lastName"]);
+                $old_string = explode($string, $row["lastName"]);
                 $row["lastName"] = $old_string;
             }
             array_push($retArray, $row);
