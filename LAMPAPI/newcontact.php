@@ -45,7 +45,6 @@
             returnError("Error while adding happened");
         }
         $stmt->close();
-        $con->close();
     }
 
     function returnMsg($string) {
