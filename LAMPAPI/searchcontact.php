@@ -87,13 +87,11 @@
 
         while($row = $sql_res->fetch_assoc()) {
             if(str_contains($row["firstName"], $string)) {
-                $old_string = $row["firstName"];
-                $new_string = preg_replace($string, '_$1_', $old_string);
-                $row["firstName"] = $new_string;
+                $old_string = explode($string, $row["firstName"]);
+                $row["firstName"] = $old_string;
             } else {
-                $old_string = $row["lastName"];
-                $new_string = preg_replace($string, '_$1_', $old_string);
-                $row["lastName"] = $new_string;
+                $old_string = explod($string, $row["lastName"]);
+                $row["lastName"] = $old_string;
             }
             array_push($retArray, $row);
         }
