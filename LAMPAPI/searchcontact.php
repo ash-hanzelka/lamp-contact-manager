@@ -86,7 +86,7 @@
         $retArray = [];
 
         while($row = $sql_res->fetch_assoc()) {
-            if(str_contains($row["firstName"], $string)) {
+            if(str_contains(strtoupper($row["firstName"]), strtoupper($string))) {
                 $old_string = explode(strtoupper($string), strtoupper($row["firstName"]), 2);
                 $row["firstName"] = $old_string;
             } else {
