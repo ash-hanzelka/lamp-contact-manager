@@ -97,7 +97,7 @@
             }
             array_push($retArray, $row);
         }
-
+        return $retArray;
     }
 
     function getRowsAsArray($sqlResult) {
