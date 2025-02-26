@@ -60,7 +60,7 @@
 
         $stmt = $conn->prepare("SELECT * FROM Contacts WHERE userid = ? AND
         (firstName LIKE ? OR lastName LIKE ?) ORDER BY firstName");
-        $stmt->bind_param("is", $userId, $firstName);
+        $stmt->bind_param("iss", $userId, $firstName, $firstName);
         $stmt->execute();
 
         $stmt_result = $stmt->get_result();
