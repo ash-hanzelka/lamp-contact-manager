@@ -56,11 +56,11 @@
 
         returnEncodeJson($jsonToReturn);
     } else if(strcmp($type, "getset") == 0) {
-        $firstName = $inData["firstName"].'%';
+        $lookupString = '^[a-zA-Z]*'.$inData["firstName"].'[a-zA-Z]*$';
 
         $stmt = $conn->prepare("SELECT * FROM Contacts WHERE userid = ? AND
-        (firstName LIKE ? OR lastName LIKE ?) ORDER BY firstName");
-        $stmt->bind_param("iss", $userId, $firstName, $firstName);
+        (firstName REGEXP ? OR lastName REGEXP ?) ORDER BY firstName");
+        $stmt->bind_param("iss", $userId, $lookupString, $lookupString);
         $stmt->execute();
 
         $stmt_result = $stmt->get_result();
