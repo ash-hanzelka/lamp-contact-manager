@@ -85,7 +85,7 @@
     function processLookupAndReturnAsArray($sql_res, $string) {
         $retArray = [];
 
-        while($row = $sqlResult->fetch_assoc()) {
+        while($row = $sql_res->fetch_assoc()) {
             if(str_contains($row["firstName"], $string)) {
                 $old_string = $row["firstName"];
                 $new_string = preg_replace('/({$string})/i', '_$1_', $old_string);
