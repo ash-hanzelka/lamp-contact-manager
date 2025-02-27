@@ -5,7 +5,6 @@
     if (!$contactId) {
         returnError("No contactId found");
     }
-
     $firstName = $inData["firstName"];
     if (!$firstName) {
         returnError("No first name found");
@@ -28,9 +27,7 @@
         returnError($conn->connect_error);
     }
     else {
-        $stmt = $conn->prepare(
-            "UPDATE Contacts SET firstName = ?, lastName = ?, email = ?, phone = ? WHERE contactId = ?"
-        );
+        $stmt = $conn->prepare("UPDATE Contacts SET firstName = ?, lastName = ?, email = ?, phone = ? WHERE contactId = ?");
         if (!$stmt) {
             returnError("Prepare failed: " . $conn->error);
             exit;
