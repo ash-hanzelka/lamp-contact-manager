@@ -1,10 +1,11 @@
 <?php
     $inData = json_decode(file_get_contents("php://input"), true);
 
-    $userId = (int)$inData["userId"];
-    if (!$userId) {
-        returnError("No userId found");
+    $contactId = (int)$inData["contactId"];
+    if (!$contactId) {
+        returnError("No contactId found");
     }
+
     $firstName = $inData["firstName"];
     if (!$firstName) {
         returnError("No first name found");
@@ -22,23 +23,27 @@
         returnError("No phone number found");
     }
 
-    // Connect to the database
     $conn = new mysqli("localhost", "theManager", "ContactManager", "Contact");
     if ($conn->connect_error) {
         returnError($conn->connect_error);
-    } else {
-        $stmt = $conn->prepare("UPDATE Contacts SET firstName = ?, lastName = ?, email = ?, phone = ? WHERE userId = ?");
+    }
+    else {
+        $stmt = $conn->prepare(
+            "UPDATE Contacts SET firstName = ?, lastName = ?, email = ?, phone = ? WHERE contactId = ?"
+        );
         if (!$stmt) {
             returnError("Prepare failed: " . $conn->error);
             exit;
         }
-        $stmt->bind_param("ssssi", $firstName, $lastName, $email, $phone, $userId);
+
+        $stmt->bind_param("ssssi", $firstName, $lastName, $email, $phone, $contactId);
         $stmt->execute();
 
         if ($conn->affected_rows > 0) {
             returnSuccess("Contact updated successfully");
-        } else {
-            returnError("Error updating contact");
+        }
+        else {
+            returnError("Error updating contact or contact not found");
         }
 
         $stmt->close();
@@ -58,5 +63,6 @@
     function returnError($string) {
         $retMsg = sprintf('{"status":"failure","msg":"%s"}', $string);
         returnJson($retMsg);
+        exit();
     }
 ?>
