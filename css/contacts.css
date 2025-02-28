@@ -312,3 +312,8 @@ form input:focus {
 #editForm button#cancelEditButton:hover {
   background-color: #0e1424;
 }
+
+.highlight {
+  background-color: #DEE99B;
+  font-weight: bold;
+}

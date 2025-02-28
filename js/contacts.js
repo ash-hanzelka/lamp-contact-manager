@@ -46,9 +46,22 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   
     function displayContacts(contacts) {
-        contactsList.innerHTML = contacts.map(contact => `
-            <div class="contact-card" data-email="${contact.email}" data-firstname="${contact.firstName}" data-lastname="${contact.lastName}" data-phone="${contact.phone}">
-                <h3>${contact.firstName} ${contact.lastName}</h3>
+        contactsList.innerHTML = contacts.map(contact => {
+
+            let firstName = contact.firstName;
+            let lastName = contact.lastName;
+            
+            if (firstName.includes('_')) {
+                firstName = processHighlightedText(firstName);
+            }
+            
+            if (lastName.includes('_')) {
+                lastName = processHighlightedText(lastName);
+            }
+            
+            return `
+            <div class="contact-card" data-contactid="${contact.contactId}" data-email="${contact.email}" data-firstname="${contact.firstName}" data-lastname="${contact.lastName}" data-phone="${contact.phone}">
+                <h3>${firstName} ${lastName}</h3>
                 <p>Email: ${contact.email}</p>
                 <p>Phone: ${contact.phone}</p>
                 <div class="contact-actions">
@@ -58,7 +71,8 @@ document.addEventListener("DOMContentLoaded", function () {
                     </button>
                 </div>
             </div>
-        `).join('');
+            `;
+        }).join('');
   
         document.querySelectorAll(".delete-button").forEach(button => {
             button.addEventListener("click", function () {
@@ -87,6 +101,25 @@ document.addEventListener("DOMContentLoaded", function () {
                 showEditPopup(contactToEdit);
             });
         });
+    }
+
+    function processHighlightedText(text) {
+        if (text.includes('_')) {
+            const parts = text.split('_');
+            const result = [];
+            
+            for (let i = 0; i < parts.length; i++) {
+                if (i % 2 === 0) {
+                    result.push(parts[i]);
+                } else {
+                    result.push(`<span class="highlight">${parts[i]}</span>`);
+                }
+            }
+            
+            return result.join('');
+        }
+        
+        return text;
     }
   
     function showDeletePopup() {
