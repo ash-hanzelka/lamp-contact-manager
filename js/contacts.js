@@ -60,7 +60,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }
             
             return `
-            <div class="contact-card" data-contactid="${contact.contactId}" data-email="${contact.email}" data-firstname="${contact.firstName}" data-lastname="${contact.lastName}" data-phone="${contact.phone}">
+            <div class="contact-card" data-contactid="${contact.contactid}" data-email="${contact.email}" data-firstname="${contact.firstName}" data-lastname="${contact.lastName}" data-phone="${contact.phone}">
                 <h3>${firstName} ${lastName}</h3>
                 <p>Email: ${contact.email}</p>
                 <p>Phone: ${contact.phone}</p>
