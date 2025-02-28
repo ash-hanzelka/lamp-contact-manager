@@ -135,7 +135,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 method: "POST",
                 body: JSON.stringify({ 
                     userId: userId, 
-                    contactId: contactToDelete.contactId 
+                    contactId: contactToDelete.contactid 
                 }),
                 headers: { "Content-Type": "application/json" }
             })
