@@ -4,6 +4,7 @@
     $contactId = (int)$inData["contactId"];
     if (!$contactId) {
         returnError("No contactId");
+        die();
     }
 
     $conn = new mysqli("localhost", "theManager", "ContactManager", "Contact");
