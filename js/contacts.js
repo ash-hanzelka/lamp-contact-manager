@@ -130,9 +130,13 @@ document.addEventListener("DOMContentLoaded", function () {
   
     confirmDeleteButton.addEventListener("click", function () {
         if (contactToDelete) {
+            console.log("Deleting contact:", contactToDelete); // FOR TESTING
             fetch(`${urlBase}/deletecontact.${extension}`, {
                 method: "POST",
-                body: JSON.stringify({ contactId: contactToDelete.contactId }),
+                body: JSON.stringify({ 
+                    userId: userId, 
+                    contactId: contactToDelete.contactId 
+                }),
                 headers: { "Content-Type": "application/json" }
             })
             .then(response => response.json())
@@ -165,11 +169,13 @@ document.addEventListener("DOMContentLoaded", function () {
         e.preventDefault();
         const updatedContactData = {
             userId: userId,
+            contactId: contactToEdit.contactId,
             firstName: editFirstNameInput.value.trim(),
             lastName: editLastNameInput.value.trim(),
             email: editEmailInput.value.trim(),
             phone: editPhoneInput.value.trim()
         };
+
         // NO CHANGES MADE
         if (
             updatedContactData.firstName === contactToEdit.firstName &&
