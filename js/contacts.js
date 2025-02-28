@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
   
     var urlBase = "http://ultrausefulcontactmanager.site/LAMPAPI";
     var extension = "php";
-    var userId = localStorage.getItem("userid");
+    var userId = localStorage.getItem("userId");
   
     if (!userId) {
         window.location.href = "index.html";
