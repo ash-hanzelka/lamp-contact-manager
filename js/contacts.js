@@ -79,6 +79,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 const contactCard = button.closest(".contact-card");
                 contactToDelete = {
                     userId: userId,
+                    contactId: contactCard.getAttribute("data-contactid"),
                     firstName: contactCard.getAttribute("data-firstname"),
                     lastName: contactCard.getAttribute("data-lastname"),
                     email: contactCard.getAttribute("data-email"),
@@ -93,6 +94,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 const contactCard = button.closest(".contact-card");
                 contactToEdit = {
                     userId: userId,
+                    contactId: contactCard.getAttribute("data-contactid"),
                     firstName: contactCard.getAttribute("data-firstname"),
                     lastName: contactCard.getAttribute("data-lastname"),
                     email: contactCard.getAttribute("data-email"),
@@ -109,9 +111,9 @@ document.addEventListener("DOMContentLoaded", function () {
             const result = [];
             
             for (let i = 0; i < parts.length; i++) {
-                if (i % 2 === 0) {
+                if (i % 2 === 0) {          // even is portions outside underscores; display normal
                     result.push(parts[i]);
-                } else {
+                } else {                    // highlight the portion INSIDE the underscores
                     result.push(`<span class="highlight">${parts[i]}</span>`);
                 }
             }
@@ -130,7 +132,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (contactToDelete) {
             fetch(`${urlBase}/deletecontact.${extension}`, {
                 method: "POST",
-                body: JSON.stringify(contactToDelete),
+                body: JSON.stringify({ contactId: contactToDelete.contactId }),
                 headers: { "Content-Type": "application/json" }
             })
             .then(response => response.json())
