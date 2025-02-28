@@ -18,9 +18,9 @@ document.addEventListener("DOMContentLoaded", function () {
   
     var urlBase = "http://ultrausefulcontactmanager.site/LAMPAPI";
     var extension = "php";
-    var userId = localStorage.getItem("userId");
+    var userid = localStorage.getItem("userid");
   
-    if (!userId) {
+    if (!userid) {
         window.location.href = "index.html";
         return;
     }
@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function fetchContacts() {
         fetch(`${urlBase}/searchcontact.${extension}`, {
             method: "POST",
-            body: JSON.stringify({ userId: userId, type: "getall" }),
+            body: JSON.stringify({ userid: userid, type: "getall" }),
             headers: { "Content-Type": "application/json" }
         })
         .then(response => response.json())
@@ -78,7 +78,7 @@ document.addEventListener("DOMContentLoaded", function () {
             button.addEventListener("click", function () {
                 const contactCard = button.closest(".contact-card");
                 contactToDelete = {
-                    userId: userId,
+                    userid: userid,
                     contactId: contactCard.getAttribute("data-contactid"),
                     firstName: contactCard.getAttribute("data-firstname"),
                     lastName: contactCard.getAttribute("data-lastname"),
@@ -93,7 +93,7 @@ document.addEventListener("DOMContentLoaded", function () {
             button.addEventListener("click", function() {
                 const contactCard = button.closest(".contact-card");
                 contactToEdit = {
-                    userId: userId,
+                    userid: userid,
                     contactId: contactCard.getAttribute("data-contactid"),
                     firstName: contactCard.getAttribute("data-firstname"),
                     lastName: contactCard.getAttribute("data-lastname"),
@@ -134,7 +134,7 @@ document.addEventListener("DOMContentLoaded", function () {
             fetch(`${urlBase}/deletecontact.${extension}`, {
                 method: "POST",
                 body: JSON.stringify({ 
-                    userId: userId, 
+                    userid: userid, 
                     contactId: contactToDelete.contactId 
                 }),
                 headers: { "Content-Type": "application/json" }
@@ -168,7 +168,7 @@ document.addEventListener("DOMContentLoaded", function () {
     editForm.addEventListener("submit", function(e) {
         e.preventDefault();
         const updatedContactData = {
-            userId: userId,
+            userid: userid,
             contactId: contactToEdit.contactId,
             firstName: editFirstNameInput.value.trim(),
             lastName: editLastNameInput.value.trim(),
@@ -234,7 +234,7 @@ document.addEventListener("DOMContentLoaded", function () {
         e.preventDefault();
   
         const contactData = {
-            userId: userId,
+            userid: userid,
             firstName: document.getElementById("firstName").value.trim(),
             lastName: document.getElementById("lastName").value.trim(),
             email: document.getElementById("email").value.trim(),
@@ -268,7 +268,7 @@ document.addEventListener("DOMContentLoaded", function () {
         fetch(`${urlBase}/searchcontact.${extension}`, {
             method: 'POST',
             body: JSON.stringify({ 
-                userId: userId,
+                userid: userid,
                 type: "getset",
                 firstName: searchTerm
             }), 
