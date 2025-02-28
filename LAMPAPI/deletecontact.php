@@ -11,7 +11,7 @@
     if ($conn->connect_error) {
         returnError($conn->connect_error);
     } else {
-        $stmt = $conn->prepare("DELETE FROM Contacts WHERE contactId = ?");
+        $stmt = $conn->prepare("DELETE FROM Contacts WHERE contactid = ?");
         if (!$stmt) {
             returnError("Prepare failed: " . $conn->error);
             exit;
