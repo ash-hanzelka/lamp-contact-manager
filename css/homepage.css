@@ -141,7 +141,7 @@ h2 {
 
 /* Spotify player container with absolute positioning */
 /* This takes it out of the document flow so it won't affect other elements */
-.spotify-player-container {
+/* .spotify-player-container {
     position: fixed;
     top: 20px;
     right: 20px;
@@ -153,7 +153,7 @@ h2 {
     transition: all 0.3s ease;
     margin: 0;
     padding: 0;
-    display: none; /* Start hidden */
+    display: none; 
 }
 
 .spotify-player-container iframe {
@@ -162,7 +162,7 @@ h2 {
     border: none;
 }
 
-/* Toggle button to show/hide player */
+
 .toggle-player {
     position: fixed;
     right: 20px;
@@ -175,16 +175,15 @@ h2 {
     cursor: pointer;
     z-index: 1001;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    transition: top 0.3s ease; /* Smooth movement */
+    transition: top 0.3s ease; 
 }
 
 .toggle-player:hover {
     background-color: #9FBAF1;
 }
 
-/* Small screen adjustments */
 @media (max-width: 768px) {
     .spotify-player-container {
         width: 200px;
     }
-}
+} */
