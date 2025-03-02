@@ -202,9 +202,7 @@ document.addEventListener("DOMContentLoaded", function () {
             if (data.status === "success") {
                 fetchContacts();
                 editPopup.classList.remove("show");
-            } else {
-                alert("Error updating contact: " + data.msg);
-            }
+            } 
         })
         .catch(error => {
             console.error("Error updating contact:", error);
