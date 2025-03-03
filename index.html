@@ -13,6 +13,13 @@
     
     <div id="particles-js"></div>
 
+    <audio id="background-music" loop>
+        <source src="aot_lofi.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+    
+    <img id="audio-control" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0id2hpdGUiPjxwYXRoIGQ9Ik0zIDkuNXY1YTIuNSAyLjUgMCAwIDAgMi41IDIuNUg4bDUuNSA0VjVMOCA5SDUuNUEyLjUgMi41IDAgMCAwIDMgOS41eiIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPjxwYXRoIGNsYXNzPSJ2b2x1bWUtd2F2ZXMiIGQ9Ik0xNyA4YzEuNSAyIDEuNSA2IDAgOE0yMCA2YzIuNSAzIDIuNSA5IDAgMTIiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz48L3N2Zz4=" alt="Audio Control" class="muted">
+
     <!-- add the slogan at the top -->
     <h2 id="slogan"></h2>
 
@@ -29,14 +36,7 @@
     </div>
 
     
-    <!-- Toggle button for the player -->
-    <!-- <button class="toggle-player" id="togglePlayer">Hide Player</button> -->
     
-    <!-- Spotify player container -->
-    <!-- <div class="spotify-player-container" id="spotifyContainer">
-        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/3nlmGyOHuob75DAZvUZ9Ey?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-    
-    </div> -->
 
     <script>
 
@@ -91,32 +91,39 @@
             "retina_detect": true
         });
     </script>
-     <!-- <script>
+    <script>
+        // FOR AUDIO IMPLEMENTATION
         document.addEventListener('DOMContentLoaded', function() {
-        const toggleButton = document.getElementById('togglePlayer');
-        const playerContainer = document.getElementById('spotifyContainer');
+            const audioElement = document.getElementById('background-music');
+            const audioControl = document.getElementById('audio-control');
 
-        // Ensure player starts hidden on every page load
-        playerContainer.style.display = 'none';
-        toggleButton.textContent = 'Show Player';
-
-        // Set default button position
-        toggleButton.style.top = '20px'; // Move up when player is hidden
-
-        // Toggle player visibility
-        toggleButton.addEventListener('click', function() {
-            if (playerContainer.style.display === 'none') {
-                playerContainer.style.display = 'block';
-                toggleButton.textContent = 'Hide Player';
-                toggleButton.style.top = '110px'; // Move down when player is visible
-            } else {
-                playerContainer.style.display = 'none';
-                toggleButton.textContent = 'Show Player';
-                toggleButton.style.top = '20px'; // Move up when player is hidden
-            }
+            audioElement.volume = 0.15;
+            
+            // Start with audio muted
+            audioElement.muted = true;
+            audioElement.play().catch(e => {
+                console.log('Auto-play prevented by browser:', e);
+                // We'll handle this when user interacts with the page
+            });
+            
+            
+            audioControl.addEventListener('click', function() {
+                if (audioElement.muted) {
+                    audioElement.muted = false;
+                    audioControl.classList.remove('muted');
+                    audioControl.classList.add('unmuted');
+                    
+                    
+                    if (audioElement.paused) {
+                        audioElement.play().catch(e => console.log('Error playing audio:', e));
+                    }
+                } else {
+                    audioElement.muted = true;
+                    audioControl.classList.remove('unmuted');
+                    audioControl.classList.add('muted');
+                }
+            });
         });
-    }); -->
-
     </script>
     <!-- typewriter effect for slogan -->
     <script>

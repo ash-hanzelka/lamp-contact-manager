@@ -116,74 +116,27 @@ h2 {
 
 
 
-/* ----------------------------- FOR SPOTIFY EMBED -----------------------------*/
-/* Main content container */
-.content {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-    box-sizing: border-box;
-    position: relative; /* Create positioning context */
-}
-
-/* Centered image container */
-.centered-image {
-    width: 100%;
-    text-align: center;
-    margin: 20px 0;
-}
-
-.centered-image img {
-    max-width: 100%;
-    height: auto;
-}
-
-/* Spotify player container with absolute positioning */
-/* This takes it out of the document flow so it won't affect other elements */
-/* .spotify-player-container {
+/* FOR AUDIO STUFF !!!! */
+#audio-control {
     position: fixed;
     top: 20px;
     right: 20px;
-    width: 250px;
-    z-index: 1000;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    border-radius: 12px;
-    overflow: hidden;
-    transition: all 0.3s ease;
-    margin: 0;
-    padding: 0;
-    display: none; 
-}
-
-.spotify-player-container iframe {
-    width: 100%;
-    height: 80px;
-    border: none;
-}
-
-
-.toggle-player {
-    position: fixed;
-    right: 20px;
-    background-color: #9FBAF1;
-    color: white;
-    border: none;
-    border-radius: 20px;
-    padding: 6px 12px;
-    font-size: 12px;
+    width: 30px;
+    height: 30px;
     cursor: pointer;
-    z-index: 1001;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    transition: top 0.3s ease; 
+    z-index: 1000;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
 }
 
-.toggle-player:hover {
-    background-color: #9FBAF1;
+#audio-control:hover {
+    opacity: 1;
 }
 
-@media (max-width: 768px) {
-    .spotify-player-container {
-        width: 200px;
-    }
-} */
+#audio-control.muted {
+    filter: grayscale(100%);
+}
+
+#audio-control.unmuted {
+    filter: none;
+}
