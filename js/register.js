@@ -20,6 +20,7 @@ function doRegister() {
     }
 
     // hash the password
+    console.log("Original password:", password);
     var hash = md5(password); // hashing password
     console.log(hash);
     // prepare data to send
