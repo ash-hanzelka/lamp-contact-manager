@@ -1,5 +1,5 @@
 // fix cookies function call later
-const urlBase = "http://ultrausefulcontactmanager.site/LAMPAPI";
+const urlBase = "http://ashhanzdev.my/LAMPAPI";
 const extension = "php";
 
 function doLogin() {

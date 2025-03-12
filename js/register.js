@@ -1,4 +1,4 @@
-const urlBase = "http://ultrausefulcontactmanager.site/LAMPAPI";
+const urlBase = "http://ashhanzdev.my/LAMPAPI";
 const extension = "php";
 
 function doRegister() {

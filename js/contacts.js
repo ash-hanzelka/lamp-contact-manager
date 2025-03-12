@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const editEmailInput = document.getElementById("editEmail");
     const editPhoneInput = document.getElementById("editPhone");
   
-    var urlBase = "http://ultrausefulcontactmanager.site/LAMPAPI";
+    var urlBase = "http://ashhanzdev.my/LAMPAPI";
     var extension = "php";
     var userId = localStorage.getItem("userId");
   

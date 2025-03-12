@@ -1,6 +1,6 @@
 // (This is gerber's code im using as ref)
 
-const urlBase = "http://ultrausefulcontactmanager.site/LAMPAPI";
+const urlBase = "http://ashhanzdev.my/LAMPAPI";
 const extension = 'php';
 
 let userId = 0;
