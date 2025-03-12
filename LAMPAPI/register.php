@@ -25,7 +25,10 @@
             returnError("Username already exists.");
         } else {
             // Hash the password before inserting it into the database
-            $hashedPassword = md5($password);
+            // $hashedPassword = md5($password);
+            // ^^^^ NO ! password was already hashed in js! this will double hash, leading 
+            // instead, just pass password to the database, since it holds the current hashed version !!!!
+            $hashedPassword = $password;
 
             $insertStmt = $conn->prepare("INSERT INTO Users (username, password, firstName, lastName) VALUES (?, ?, ?, ?)");
             $insertStmt->bind_param("ssss", $username, $hashedPassword, $first_name, $last_name);
