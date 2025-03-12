@@ -24,8 +24,11 @@
         if($numUsers > 0) {
             returnError("Username already exists.");
         } else {
+            // Hash the password before inserting it into the database
+            $hashedPassword = md5($password);
+
             $insertStmt = $conn->prepare("INSERT INTO Users (username, password, firstName, lastName) VALUES (?, ?, ?, ?)");
-            $insertStmt->bind_param("ssss", $username, $password, $first_name, $last_name);
+            $insertStmt->bind_param("ssss", $username, $hashedPassword, $first_name, $last_name);
             $insertStmt->execute();
             if($conn->affected_rows > 0) {
                 returnSuccess("User created successfully.");
