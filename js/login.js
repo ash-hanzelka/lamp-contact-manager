@@ -8,9 +8,10 @@ function doLogin() {
     document.getElementById("loginPassword").classList.remove('error');
 
     // get text entries
-    var username = document.getElementById("loginName").value;
-    var password = document.getElementById("loginPassword").value;
+    var username = document.getElementById("loginName").value.trim();
+    var password = document.getElementById("loginPassword").value.trim();
     var hash = md5(password); // hash of password
+    console.log("Hashed password sent to server:", hash);
     console.log(hash);
     // check login
     if (checkLogin(username, password)) {
